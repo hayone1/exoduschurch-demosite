@@ -16,6 +16,7 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     'nuxt-viewport',
     'motion-v/nuxt',
-    '@nuxtjs/seo'
+    '@nuxtjs/seo',
+    '@nuxthub/core'
   ]
 })
