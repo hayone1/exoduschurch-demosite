@@ -9,7 +9,6 @@ useHead({
   title: 'Exodus Church',
   titleTemplate: '%s | %siteName',
   templateParams: {
-    siteName: 'Exodus Church',
     schemaOrg: {
       host: url.href,
       path: url.pathname,

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { NavigationMenuItem } from '@nuxt/ui';
+
 // import type { NavigationMenuItem } from '@nuxt/ui'
 const route = useRoute();
 const viewport = useViewport();
@@ -156,7 +158,7 @@ const navItems = computed(() => [
     const { avatar, ...newNavItem } = navItem;
     return newNavItem
   }
-}))
+}) as NavigationMenuItem[])
 
 </script>
 

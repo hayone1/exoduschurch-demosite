@@ -14,6 +14,7 @@ useSeoMeta({
 });
 defineOgImageComponent('Main', {
     headline: 'Welcome To',
+    title: '%siteName',
     logo: '/images/exodus-missions-logo-icon.png',
     socials: [
         { label: '@exoduschurch_', icon: 'i-mdi-instagram' },
