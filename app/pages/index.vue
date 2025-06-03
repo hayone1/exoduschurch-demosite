@@ -5,22 +5,8 @@ useSeoMeta({
     // titleTemplate: 'Home %separator %s',
     title: 'Welcome',
     description: 'Making disciples of all nations',
-    //ToDo: get this from environment variaable instead
-    // ogUrl: url.href,
-    // ogTitle: 'Exodus CHurch',
-    // ogImage: 'http://localhost:3000/images/main/about.png',
-    // ogDescription: 'Welcome to Exodus Church',
     robots: 'index, follow'
 });
-defineOgImageComponent('Main', {
-    headline: 'Welcome To',
-    title: '%siteName',
-    logo: '/images/exodus-missions-logo-icon.png',
-    socials: [
-        { label: '@exoduschurch_', icon: 'i-mdi-instagram' },
-        { label: '@ExodusMissions', icon: 'i-mdi-youtube' },
-    ],
-})
 
 // const parallaxFlows = useParallaxFlows();
 // const parallaxVariants = useParallaxVariants();

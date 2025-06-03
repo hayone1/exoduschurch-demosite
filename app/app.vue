@@ -15,7 +15,7 @@ useHead({
       inLanguage: 'en',
     }
   }
-})
+});
 
 useSchemaOrg([
   // much of the data will be inferred such as the title, description and all URLs
@@ -28,7 +28,17 @@ useSchemaOrg([
   defineOrganization({
     name: 'Exodus Missions',
   })
-])
+]);
+
+defineOgImageComponent('Main', {
+    headline: 'Welcome To',
+    title: '%siteName',
+    logo: '/images/exodus-missions-logo-icon.png',
+    socials: [
+        { label: '@exoduschurch_', icon: 'i-mdi-instagram' },
+        { label: '@ExodusMissions', icon: 'i-mdi-youtube' },
+    ],
+});
 </script>
 
 
