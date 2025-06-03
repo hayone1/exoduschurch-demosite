@@ -163,9 +163,6 @@ const navItems = computed(() => [
 </script>
 
 <template>
-  <!-- <div class="pt-4 sm:py-4"> -->
-    <!-- <div class="flex">
-    </div> -->
     <div class="pt-4 pointer-events-none">
       <ULink class="absolute top-0 left-0 sm:left-5 bg-transparent pointer-events-auto"
           to="/" aria-label="Home">
