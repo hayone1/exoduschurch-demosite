@@ -27,7 +27,7 @@ pageCardData:
           class: 'rounded-full'
           link: https://instagram.com/p/DKXwS_7oa0a/
     class: z-0 flex flex-row col-span-full -translate-y-3
-    cardClass: mt-20 bg-gradient-to-r h-[70vh]
+    cardClass: mt-20 bg-gradient-to-r h-[70vh] 
     variant: solid
     # footer: Making disciples of all nations.
     showFooter: true
@@ -45,10 +45,10 @@ offset: 1
 pageCardData:
     contentJustification: justify-center
     footerButtonsParentClass: justify-center
-    class: col-span-full md:col-span-5 lg:col-span-3
-    cardClass: bg-transparent
+    class: col-span-full md:col-span-5 lg:col-span-3 h-80
+    cardClass: bg-transparent h-full border-2 flex justify-center items-center
     variant: solid
-    bodyButtonsParentClass: justify-center h-80 md:pt-20
+    bodyButtonsParentClass: justify-center md:pt-20
     bodyButtons:
         - label: Testimonies
           variant: link

@@ -87,7 +87,7 @@ const navItems = [
 ].map(navItem => {
   //avatar is needed for light mode (remove icon)
   // and icon alone is needed for dark mode
-  const navClass = "text-black dark:text-white"
+  const navClass = "text-white"
   const children = navItem.children?.map(child => ({
     ...child, class: navClass,
     onSelect: collapseNav
@@ -115,7 +115,7 @@ function collapseNav() {
   <div ref="mainDiv" class="flex sm:items-center py-2
     pointer-events-none backdrop-blur-lg sm:backdrop-filter-none m-h-20">
     <ULink class="absolute top-0 left-5 bg-transparent pointer-events-auto" to="/" aria-label="Home">
-      <NuxtImg src="/images/exodus-missions-logo-icon.png" sizes="20px sm:25px" />
+      <NuxtImg src="/images/exodus-missions-logo-icon.png" sizes="20px sm:25px"/>
     </ULink>
     <UContainer class="col-span-10 rounded-full border-solid border-secondary border-1
                           transition delay-150 duration-300 ease-in-out hover:-translate-y-1
@@ -125,7 +125,8 @@ function collapseNav() {
     </UContainer>
     <UContainer class="w-full sm:hidden flex justify-end pointer-events-auto" v-on:click.self="collapseNav">
       <UCollapsible v-model:open="navOpen" class="flex flex-col">
-        <UButton color="neutral" variant="subtle" icon="i-mdi-hamburger-menu" size="xl" />
+        <UButton color="neutral" variant="subtle" icon="i-mdi-hamburger-menu" size="xl"
+          class="light:bg-transparent text-white" />
         <template #content>
           <UNavigationMenu :items="navItems" variant="pill" color="secondary" highlight orientation="vertical" />
         </template>

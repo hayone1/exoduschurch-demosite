@@ -16,7 +16,7 @@
     </section>
   
     <ClientOnly fallbackTag="span">
-      <layoutFooter/>
+      <layoutFooter />
     </ClientOnly>
 
   </div>
