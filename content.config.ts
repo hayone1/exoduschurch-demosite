@@ -34,6 +34,14 @@ export default defineContentConfig({
       type: 'page',
       source: '*.md'
     }),
+    pageCards: defineCollection({
+      type: 'page',
+      source: 'pagecards/*.md',
+      // schema: z.object({
+      //   title: z.string(),
+      //   description: z.string()
+      // })
+    }),
     cardTables: defineCollection({
       type: 'data',
       source: 'cardtables/*.yml',
