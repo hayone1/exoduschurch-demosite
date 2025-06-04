@@ -2,26 +2,9 @@
 import type { NavigationMenuItem } from '@nuxt/ui';
 
 const route = useRoute();
-const colorMode = useColorMode();
-const backgroundColor = ref("bg-neutral-800/60");
-const hoverStyle = ref("hover:scale-105 hover:bg-neutral-800");
-const navClass = ref("text-white");
 const navOpen = ref(false);
 
-watch(colorMode, () => {
-  if (colorMode.value === 'light') {
-    backgroundColor.value = "bg-white/50";
-    hoverStyle.value = "hover:scale-105";
-    navClass.value = "text-black"
-  }
-  else {
-    backgroundColor.value = "bg-neutral-800/60";
-    hoverStyle.value = "hover:scale-105 hover:bg-neutral-800";
-    navClass.value = "text-white"
-  }
-})
-
-const navItems = computed(() => [
+const navItems = [
   {
     label: "About",
     // icon: 'i-fluent-people-community-20-regular',
@@ -104,8 +87,9 @@ const navItems = computed(() => [
 ].map(navItem => {
   //avatar is needed for light mode (remove icon)
   // and icon alone is needed for dark mode
+  const navClass = "text-black dark:text-white"
   const children = navItem.children?.map(child => ({
-    ...child, class: navClass.value,
+    ...child, class: navClass,
     onSelect: collapseNav
   }));
   const avatar = {
@@ -117,10 +101,10 @@ const navItems = computed(() => [
   }
   return {
     ...navItem,
-    class: navClass.value,
+    class: navClass,
     children, avatar
   }
-}) as NavigationMenuItem[])
+}) as NavigationMenuItem[]
 
 function collapseNav() {
   navOpen.value = false;
@@ -135,8 +119,8 @@ function collapseNav() {
     </ULink>
     <UContainer class="col-span-10 rounded-full border-solid border-secondary border-1
                           transition delay-150 duration-300 ease-in-out hover:-translate-y-1
-                           max-w-fit backdrop-blur-lg pointer-events-auto hidden sm:block"
-      :class="`${hoverStyle} ${backgroundColor}`">
+                          bg-white/50 dark:bg-neutral-800/60 hover:scale-105 dark:hover:scale-105
+                           max-w-fit backdrop-blur-lg pointer-events-auto hidden sm:block">
       <UNavigationMenu :items="navItems" variant="pill" color="secondary" highlight class="flex justify-center-safe " />
     </UContainer>
     <UContainer class="w-full sm:hidden flex justify-end pointer-events-auto" v-on:click.self="collapseNav">

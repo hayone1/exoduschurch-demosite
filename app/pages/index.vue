@@ -8,9 +8,10 @@ useSeoMeta({
 });
 const { data: pageCardsData } = await useAsyncData('pagecards', () =>
   queryCollection('pageCards')
-    .path('/')
+    .path('/pagecards')
     .first()
 )
+
 
 
 const parallaxFlows = useParallaxFlows();
@@ -34,6 +35,24 @@ var parallaxScroll: {
 var parallaxFlowsProgress: MotionValue<number>[];
 var parallaxVariantProgress: MotionValue<number>[];
 
+
+//to detect scroll progress for an individual parallax flow component
+function getParallaxScrollProgress(index: number) {
+    return useTransform(
+        parallaxScroll.scrollYProgress,
+        [parallaxScrollSections[index]!, parallaxScrollSections[index + 1]!],
+        [0, 1]
+    )
+}
+
+// //-----------------Parallax---------------------
+
+// const mainContainerRef = useTemplateRef('mainContainerRef');
+// // const cardsRefs = useTemplateRef('pageCards');
+
+// // const rowCount = "grid-rows-" + Math.ceil(pageCardsData.length / 2);
+
+
 onMounted(() => {
     // console.log("parallaxScrollSections: ", JSON.stringify(parallaxScrollSections));
     parallaxScroll = useScroll({
@@ -46,34 +65,19 @@ onMounted(() => {
     parallaxVariantProgress = parallaxVariants.map((parallaxVariantData, index) =>
         getParallaxScrollProgress(parallaxFlows.length + index)
     );
+
+    console.log("pageCardsData:", JSON.stringify(pageCardsData.value));
 })
-
-//to detect scroll progress for an individual parallax flow component
-function getParallaxScrollProgress(index: number) {
-    return useTransform(
-        parallaxScroll.scrollYProgress,
-        [parallaxScrollSections[index]!, parallaxScrollSections[index + 1]!],
-        [0, 1]
-    )
-}
-
-//-----------------Parallax---------------------
-
-const mainContainerRef = useTemplateRef('mainContainerRef');
-// const cardsRefs = useTemplateRef('pageCards');
-
-const rowCount = "grid-rows-" + Math.ceil(pageCardsData.length / 2);
-
 </script>
 
 <template>
     <section>
         <UContainer ref="mainContainerRef" class="px-0 sm:mb-5">
             <div :class="`grid grid-flow-row-dense grid-cols-10
-                        lg:grid-cols-9 ${rowCount} gap-0 sm:gap-6`" id="index-page-div">
+                        lg:grid-cols-9 gap-0 sm:gap-6`" id="index-page-div">
                 <!-- <PageCard v-for="(cardData, index) in pageCardsData" :pageCardData="cardData" :offset="index">
                 </PageCard> -->
-                <p>Hello from Nuxt</p>
+                <ContentRenderer v-if="pageCardsData" :value="pageCardsData" />
             </div>
         </UContainer>
     </section>
