@@ -18,17 +18,13 @@ const pageCardAnimation = (delayIndex: number): CardAnimation => {
         offscreen: {
             opacity: 0,
             y: 300,
-            // opacity: .5,
-            filter: "blur(0px)",
+            
         },
         onscreen: {
-            opacity: 1,
             y: 0,
-            // opacity: 1,
-            filter: "blur(0px)",
+            opacity: 1,
             transition: {
                 type: "spring",
-                // bounce: 0.3,
                 duration: .8,
                 delay: (delayIndex) / 10
             },
@@ -71,14 +67,17 @@ const pageCardAnimation = (delayIndex: number): CardAnimation => {
 </script>
 
 <template>
-    <motion.div class="sm:rounded-lg" :class="pageCardData.class"
+    <motion.div class="sm:rounded-lg -translate-y-3" :class="pageCardData.class"
         :initial="pageCardAnimation(offset).offscreen" :whileInView="pageCardAnimation(offset).onscreen"
         :inViewOptions="{ once: true, margin: '50% 0px' }">
-        <div v-if="pageCardData.backdropClasses" class="absolute size-full pointer-events-none">
-            <motion.div v-for="overlayClass in pageCardData.backdropClasses"
-                :class="`absolute size-full rounded-none sm:rounded-lg ${overlayClass}`"
+        <div v-if="pageCardData.backdropClasses"
+            class="absolute size-full pointer-events-none">
+            <motion.div v-for="backdropClass in pageCardData.backdropClasses"
+                class="absolute size-full rounded-none sm:rounded-lg"
+                :class="backdropClass"
                 :initial="pageCardAnimation(offset).backdropOffscreen"
-                :whileInView="pageCardAnimation(offset).backdropOnScreen" :inViewOptions="{ once: true }" />
+                :whileInView="pageCardAnimation(offset).backdropOnScreen"
+                :inViewOptions="{ once: true }" />
 
         </div>
         <UCard :variant="pageCardData.variant"

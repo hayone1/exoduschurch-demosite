@@ -26,27 +26,29 @@ pageCardData:
           variant: subtle
           class: 'rounded-full'
           link: https://instagram.com/p/DKXwS_7oa0a/
-    class: z-0 flex flex-row col-span-full -translate-y-3
+    class: z-0 flex flex-row col-span-full
     cardClass: mt-20 bg-gradient-to-r h-[70vh] 
     variant: solid
     # footer: Making disciples of all nations.
     showFooter: true
     showHeader: true
     backdropClasses:
-        - bg-cover mask-repeat-x mask-[url(/images/vector/brush-mask-1-from-top.svg)] bg-[url(/images/main/supernatural-school-december-7.jpg)]
+        - bg-cover mask-contain mask-repeat-x mask-[url(/images/vector/brush-mask-1-from-top.svg)] bg-[url(/images/main/supernatural-school-december-7.jpg)]
         - bg-cover mask-t-from-60% mask-t-to-70% sm:mask-t-from-10% sm:mask-t-to-60% bg-[url(/images/main/supernatural-school-december-7.jpg)]
-        - backdrop-grayscale mask-r-from-30% mask-r-to-50%
+        - backdrop-grayscale mask-t-from-60% mask-t-to-80% mask-r-from-30% mask-r-to-50%
 ---
 ::
 
 ::page-card
 ---
-offset: 1
+offset: 2
 pageCardData:
     contentJustification: justify-center
     footerButtonsParentClass: justify-center
-    class: col-span-full md:col-span-5 lg:col-span-3 h-80
-    cardClass: bg-transparent h-full border-2 flex justify-center items-center
+    class: col-span-full md:col-span-5 lg:col-span-3 flex-row
+    cardClass: h-80 bg-transparent flex justify-center items-center
+    # class: z-0 flex flex-row col-span-full -translate-y-3
+    # cardClass: mt-20 bg-gradient-to-r h-[70vh] 
     variant: solid
     bodyButtonsParentClass: justify-center md:pt-20
     bodyButtons:
@@ -55,7 +57,7 @@ pageCardData:
           link: /testimonies-list
           class: text-5xl md:text-4xl font-extrabold text-neutral-600
     backdropClasses:
-        - mask-contain mask-center mask-no-repeat -z-1 mask-[url(/images/vector/brush-mask-0-linear.svg)] bg-white
+        -  mask-contain mask-center mask-no-repeat -z-1 mask-[url(/images/vector/brush-mask-0-linear.svg)] bg-white
 
 ---
 ::
