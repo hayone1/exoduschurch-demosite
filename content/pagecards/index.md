@@ -45,7 +45,7 @@ offset: 2
 pageCardData:
     contentJustification: justify-center
     footerButtonsParentClass: justify-center
-    class: col-span-full md:col-span-5 lg:col-span-3 flex-row
+    class: col-span-full md:col-span-5 lg:col-span-3
     cardClass: h-80 bg-transparent flex justify-center items-center
     # class: z-0 flex flex-row col-span-full -translate-y-3
     # cardClass: mt-20 bg-gradient-to-r h-[70vh] 
@@ -58,6 +58,41 @@ pageCardData:
           class: text-5xl md:text-4xl font-extrabold text-neutral-600
     backdropClasses:
         -  mask-contain mask-center mask-no-repeat -z-1 mask-[url(/images/vector/brush-mask-0-linear.svg)] bg-white
+
+---
+::
+
+::page-card
+---
+offset: 3
+pageCardData:
+    contentJustification: justify-center
+    footerButtonsParentClass: justify-center
+    footerButtons:
+        - label: Follow Us
+          variant: soft
+          class: text-xl bg-transparent
+    class: col-span-full md:col-span-5 lg:col-span-3
+    cardClass: bg-transparent
+    variant: solid
+    bodyButtonsParentClass: justify-center h-80 pt-30 md:pb-5
+    bodyButtons:
+        - icon: i-mdi-instagram
+          variant: solid
+          class: text-5xl md:text-4xl font-extrabold bg-linear-65 from-purple-500 to-red-500
+          link: https://www.instagram.com/exoduschurch_/#
+        - icon: i-mdi-telegram
+          variant: solid
+          class: text-5xl md:text-4xl font-extrabold bg-blue-500
+          link: https://t.me/ExodusChurch
+        - icon: i-mdi-youtube
+          variant: solid
+          class: text-5xl md:text-4xl font-extrabold bg-red-500
+          link: https://www.youtube.com/@ExodusMissions
+    showFooter: true
+    backdropClasses:
+        - mask-contain mask-center mask-no-repeat -z-1 mask-[url(/images/vector/brush-mask-0-linear.svg)] bg-white
+
 
 ---
 ::
