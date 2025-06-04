@@ -67,11 +67,11 @@ const pageCardAnimation = (delayIndex: number): CardAnimation => {
 </script>
 
 <template>
-    <motion.div class="sm:rounded-lg -translate-y-3" :class="pageCardData.class"
+    <motion.div class="sm:rounded-lg -translate-y-3 border-2 border-black" :class="pageCardData.class"
         :initial="pageCardAnimation(offset).offscreen" :whileInView="pageCardAnimation(offset).onscreen"
         :inViewOptions="{ once: true, margin: '50% 0px' }">
         <div v-if="pageCardData.backdropClasses"
-            class="absolute size-full pointer-events-none">
+            class="absolute size-full pointer-events-none top-0">
             <motion.div v-for="backdropClass in pageCardData.backdropClasses"
                 class="absolute size-full rounded-none sm:rounded-lg"
                 :class="backdropClass"
@@ -81,7 +81,8 @@ const pageCardAnimation = (delayIndex: number): CardAnimation => {
 
         </div>
         <UCard :variant="pageCardData.variant"
-            :class="`basis-2/3 text-white z-3 rounded-none sm:rounded-lg ${pageCardData.cardClass}`">
+            class="basis-2/3 text-white z-3 rounded-none sm:rounded-lg border-2"
+            :class="pageCardData.cardClass">
 
             <template v-if="pageCardData.showHeader" #header>
                 <div :class="`flex w-full ${pageCardData.contentJustification}`">

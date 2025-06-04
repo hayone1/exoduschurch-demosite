@@ -41,7 +41,7 @@ pageCardData:
 
 ::page-card
 ---
-offset: 2
+offset: 3
 pageCardData:
     contentJustification: justify-center
     footerButtonsParentClass: justify-center
@@ -50,7 +50,7 @@ pageCardData:
     # class: z-0 flex flex-row col-span-full -translate-y-3
     # cardClass: mt-20 bg-gradient-to-r h-[70vh] 
     variant: solid
-    bodyButtonsParentClass: justify-center md:pt-20
+    bodyButtonsParentClass: justify-center
     bodyButtons:
         - label: Testimonies
           variant: link
@@ -64,18 +64,19 @@ pageCardData:
 
 ::page-card
 ---
-offset: 3
+offset: 2
 pageCardData:
     contentJustification: justify-center
-    footerButtonsParentClass: justify-center
-    footerButtons:
-        - label: Follow Us
-          variant: soft
-          class: text-xl bg-transparent
+    # footerButtonsParentClass: justify-center
+    # footerButtons:
+    #     - label: Follow Us
+    #       variant: soft
+    #       class: text-xl bg-transparent
+    # showFooter: true
     class: col-span-full md:col-span-5 lg:col-span-3
     cardClass: bg-transparent
     variant: solid
-    bodyButtonsParentClass: justify-center h-80 pt-30 md:pb-5
+    bodyButtonsParentClass: justify-center h-60 md:pb-5
     bodyButtons:
         - icon: i-mdi-instagram
           variant: solid
@@ -89,10 +90,28 @@ pageCardData:
           variant: solid
           class: text-5xl md:text-4xl font-extrabold bg-red-500
           link: https://www.youtube.com/@ExodusMissions
-    showFooter: true
     backdropClasses:
         - mask-contain mask-center mask-no-repeat -z-1 mask-[url(/images/vector/brush-mask-0-linear.svg)] bg-white
+---
+::
 
+::page-card
+---
+offset: 1
+pageCardData:
+  contentJustification: justify-center
+  footerButtonsParentClass: justify-center
+  class: col-span-full md:col-span-5 lg:col-span-3
+  cardClass: h-80 bg-transparent flex justify-center items-center
+  variant: solid
+  bodyButtonsParentClass: justify-center md:pt-20
+  bodyButtons:
+    - label: Serve
+      variant: link
+      class: text-5xl font-extrabold text-white-600
+      link: /community#technical-unit
+  backdropClasses:
+    - mask-contain mask-center mask-no-repeat -z-1 mask-[url(/images/vector/brush-mask-0-linear.svg)] bg-neutral-600/30
 
 ---
 ::
