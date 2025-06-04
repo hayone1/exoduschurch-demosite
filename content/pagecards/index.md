@@ -74,9 +74,9 @@ pageCardData:
     #       class: text-xl bg-transparent
     # showFooter: true
     class: col-span-full md:col-span-5 lg:col-span-3
-    cardClass: bg-transparent
+    cardClass: h-80 bg-transparent flex justify-center items-center
     variant: solid
-    bodyButtonsParentClass: justify-center h-60 md:pb-5
+    bodyButtonsParentClass: justify-center h-40
     bodyButtons:
         - icon: i-mdi-instagram
           variant: solid
@@ -104,7 +104,7 @@ pageCardData:
   class: col-span-full md:col-span-5 lg:col-span-3
   cardClass: h-80 bg-transparent flex justify-center items-center
   variant: solid
-  bodyButtonsParentClass: justify-center md:pt-20
+  bodyButtonsParentClass: justify-center
   bodyButtons:
     - label: Serve
       variant: link

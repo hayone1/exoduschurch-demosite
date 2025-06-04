@@ -67,7 +67,7 @@ const pageCardAnimation = (delayIndex: number): CardAnimation => {
 </script>
 
 <template>
-    <motion.div class="sm:rounded-lg -translate-y-3 border-2 border-black" :class="pageCardData.class"
+    <motion.div class="sm:rounded-lg -translate-y-3" :class="pageCardData.class"
         :initial="pageCardAnimation(offset).offscreen" :whileInView="pageCardAnimation(offset).onscreen"
         :inViewOptions="{ once: true, margin: '50% 0px' }">
         <div v-if="pageCardData.backdropClasses"
@@ -81,7 +81,7 @@ const pageCardAnimation = (delayIndex: number): CardAnimation => {
 
         </div>
         <UCard :variant="pageCardData.variant"
-            class="basis-2/3 text-white z-3 rounded-none sm:rounded-lg border-2"
+            class="basis-2/3 text-white z-3 rounded-none sm:rounded-lg"
             :class="pageCardData.cardClass">
 
             <template v-if="pageCardData.showHeader" #header>
@@ -111,7 +111,8 @@ const pageCardAnimation = (delayIndex: number): CardAnimation => {
                 <BasicCardTable v-if="pageCardData.bodies" :content="pageCardData.bodies" />
 
                 <div v-if="pageCardData.bodyButtons"
-                    class="flex flex-row flex-wrap gap-2" :class="pageCardData.bodyButtonsParentClass">
+                    class="flex flex-row flex-wrap gap-2"
+                    :class="pageCardData.bodyButtonsParentClass">
                     <UButton v-for="buttonData in pageCardData.bodyButtons" :label="buttonData.label"
                         :variant="buttonData.variant" :color="buttonData.color" :class="buttonData.class"
                         :icon="buttonData.icon" @click="bodyButtonHandler" :to="buttonData.link"/>
