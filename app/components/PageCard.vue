@@ -108,7 +108,7 @@ const pageCardAnimation = (delayIndex: number): CardAnimation => {
 
                 <p v-if="pageCardData.body" :class="pageCardData.bodyClass">{{ pageCardData.body }}</p>
 
-                <CardGrid v-if="pageCardData.bodies" :content="pageCardData.bodies" />
+                <BasicCardTable v-if="pageCardData.bodies" :content="pageCardData.bodies" />
 
                 <div v-if="pageCardData.bodyButtons"
                     class="flex flex-row flex-wrap gap-2" :class="pageCardData.bodyButtonsParentClass">
@@ -128,7 +128,7 @@ const pageCardAnimation = (delayIndex: number): CardAnimation => {
                 <div v-if="pageCardData.footerButtons"
                     :class="`flex flex-row flex-wrap gap-2 ${pageCardData.footerButtonsParentClass}`">
                     <UButton v-for="buttonData in pageCardData.footerButtons" :label="buttonData.label"
-                        :variant="buttonData.variant" color="neutral" :class="buttonData.class"
+                        :variant="buttonData.variant" :color="buttonData.color" :class="buttonData.class"
                         :icon="buttonData.icon" :to="buttonData.link" target="_blank" />
                 </div>
             </template>

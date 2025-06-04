@@ -113,7 +113,7 @@ function collapseNav() {
 
 <template>
   <div ref="mainDiv" class="flex sm:items-center py-2
-    pointer-events-none backdrop-blur-lg m-h-20">
+    pointer-events-none backdrop-blur-lg sm:backdrop-filter-none m-h-20">
     <ULink class="absolute top-0 left-5 bg-transparent pointer-events-auto" to="/" aria-label="Home">
       <NuxtImg src="/images/exodus-missions-logo-icon.png" sizes="20px sm:25px" />
     </ULink>

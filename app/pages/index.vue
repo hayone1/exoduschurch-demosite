@@ -66,19 +66,14 @@ onMounted(() => {
         getParallaxScrollProgress(parallaxFlows.length + index)
     );
 
-    console.log("pageCardsData:", JSON.stringify(pageCardsData.value));
+    // console.log("pageCardsData:", JSON.stringify(pageCardsData.value));
 })
 </script>
 
 <template>
     <section>
-        <UContainer ref="mainContainerRef" class="px-0 sm:mb-5">
-            <div :class="`grid grid-flow-row-dense grid-cols-10
-                        lg:grid-cols-9 gap-0 sm:gap-6`" id="index-page-div">
-                <!-- <PageCard v-for="(cardData, index) in pageCardsData" :pageCardData="cardData" :offset="index">
-                </PageCard> -->
-                <ContentRenderer v-if="pageCardsData" :value="pageCardsData" />
-            </div>
+        <UContainer ref="mainContainerRef" class="px-0">
+            <ContentRenderer v-if="pageCardsData" :value="pageCardsData" />
         </UContainer>
     </section>
 </template>
