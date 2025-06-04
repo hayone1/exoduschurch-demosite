@@ -251,7 +251,7 @@ const paginatedData = computed(() => paginateArray(
     </motion.ul>
     <br />
     <UCard>
-        <div class="flex flex-wrap items-center justify-between gap-2">
+        <div class="flex flex-wrap items-center justify-center sm:justify-between gap-2">
             <UButtonGroup class="items-center gap-2">
                 <p>
                     Total: {{ totaltransformedCards }}

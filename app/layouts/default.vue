@@ -1,11 +1,11 @@
 <template>
   <div class="flex flex-col min-h-screen justify-between">
-    <!-- <ClientOnly fallbackTag="span">
+    <ClientOnly fallbackTag="span">
       <layoutBackground />
       <template #fallback>
         <LayoutLoading />
       </template>
-    </ClientOnly> -->
+    </ClientOnly>
   
     <ClientOnly fallbackTag="span">
       <layoutHeader class="sticky top-0 z-5"/>

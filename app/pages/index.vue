@@ -2,7 +2,6 @@
 import type { MotionValue } from 'motion-v';
 
 useSeoMeta({
-    // titleTemplate: 'Home %separator %s',
     title: 'Welcome',
     description: 'Making disciples of all nations',
     robots: 'index, follow'

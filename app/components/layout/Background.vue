@@ -101,7 +101,7 @@ onUnmounted(() => {
   <section id="animated-background" ref="animatedBackgroundRef">
     <motion.div v-if="colorMode.value === 'light'" :class="`-z-5 fixed size-full
                     overflow-hidden grid grid-cols-${blobsColumsNo}`"
-      :animate="{ scale: 1.4, transition: defaultTransition }">
+      :animate="{ scale: 2, transition: defaultTransition }" :initial="{ scale: 2 }">
       <motion.div v-for="(blob, index) in backgroundBlobs" :id=blob.id class="pointer-events-none" :initial="{
         borderRadius: blob.borderRadius,
         background: blob.backGroundColor

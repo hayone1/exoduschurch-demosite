@@ -10,7 +10,6 @@ interface CardData {
     titleButton?: ButtonContent
     textWithImage?: InlineImageText
     bodyImage?: string
-    qrCodeUrl?: string
     bodyButtonsParentClass?: string
     bodyButtons?: ButtonContent[]
     footerButtonsParentClass?: string
