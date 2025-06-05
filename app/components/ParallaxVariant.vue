@@ -78,14 +78,9 @@ useMotionValueEvent(yClipPathSpring, "change", (latestValue) => {
                             <NuxtImg sizes="150px" :src="parallaxVariant.graphic.centralImage" />
                         </div>
                     </div>
-                    <!-- <div class="capsule  -translate-y-6">
-                        <NuxtImg sizes="150px" src="/images/light/exodus-missions-logo.png" />
-                    </div> -->
-                    <div v-for="icon in parallaxVariant.graphic.icons" class="satellite grow-1x">
+                    <div v-for="icon in parallaxVariant.graphic.icons" class="satellite grow-1x invisible sm:visible">
                         <div class="capsule text-white">
                             <UIcon :name="icon" size="25" />
-                            <!-- <UIcon :name="`i-lucide-image`" size="20"/> -->
-                            <!-- <UAvatar icon="i-lucide-image" size="md" /> -->
                         </div>
                     </div>
                 </div>
