@@ -50,7 +50,7 @@ const navItems = [
     to: '/sermons-list',
     // class: navProps(navLabels[2]!).navClass,
     active: route.path.includes("sermons"),
-    children: []
+    onSelect: collapseNav
   },
   {
     label: "Give",
@@ -61,6 +61,7 @@ const navItems = [
     to: '/#give',
     // class: navProps(navLabels[3]!).navClass,
     active: route.path.includes("give"),
+    onSelect: collapseNav
     // target: '_blank'
   },
   {
@@ -126,7 +127,7 @@ function collapseNav() {
     <UContainer class="w-full sm:hidden flex justify-end pointer-events-auto" v-on:click.self="collapseNav">
       <UCollapsible v-model:open="navOpen" class="flex flex-col">
         <UButton color="neutral" variant="subtle" icon="i-mdi-hamburger-menu" size="xl"
-          class="light:bg-transparent text-white" />
+          class="light:bg-transparent text-white text-2xl" />
         <template #content>
           <UNavigationMenu :items="navItems" variant="pill" color="secondary" highlight orientation="vertical" />
         </template>
