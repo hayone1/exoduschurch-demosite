@@ -1,5 +1,7 @@
 # Exodus Church Demo website
 
+[![Deploy to NuxtHub](https://github.com/hayone1/exoduschurch-demosite/actions/workflows/nuxthub.yml/badge.svg)](https://github.com/hayone1/exoduschurch-demosite/actions/workflows/nuxthub.yml)
+
 This is a demo site I made to learn vue.
 It uses:
 - vue
