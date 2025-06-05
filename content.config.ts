@@ -32,19 +32,27 @@ export default defineContentConfig({
   collections: {
     content: defineCollection({
       type: 'page',
-      source: '*.md'
+      // source: '*.md'
+      source: {
+        repository: 'https://github.com/hayone1/exoduschurch-demodata',
+        include: '*.md',
+      },
     }),
     pageCards: defineCollection({
       type: 'page',
-      source: 'pagecards/*.md',
-      // schema: z.object({
-      //   title: z.string(),
-      //   description: z.string()
-      // })
+      // source: 'pagecards/*.md',
+      source: {
+        repository: 'https://github.com/hayone1/exoduschurch-demodata',
+        include: 'pagecards/*.md',
+      },
     }),
     cardTables: defineCollection({
       type: 'data',
-      source: 'cardtables/*.yml',
+      // source: 'cardtables/*.yml',
+      source: {
+        repository: 'https://github.com/hayone1/exoduschurch-demodata',
+        include: 'cardtables/*.yml',
+      },
       schema: z.object({
         title: z.string(),
         description: z.string(),
