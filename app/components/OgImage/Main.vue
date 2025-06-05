@@ -8,7 +8,6 @@ const {
     socials?: { label: string, icon: string }[]
 }>()
 
-// const title = computed(() => props.title.slice(0, 60))
 </script>
 
 <template>
@@ -56,7 +55,5 @@ const {
         border-2 bg-orange-50 flex justify-center">
             <NuxtImg v-if="logo" height="150" :src="logo" />
         </div>
-        <!-- <NuxtImg v-if="logo" class="rounded-full absolute top-[250px] right-[190px] size-40
-        border-2 border-black flex" :src="logo"/> -->
     </div>
 </template>
