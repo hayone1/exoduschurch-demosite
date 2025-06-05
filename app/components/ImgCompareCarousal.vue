@@ -51,7 +51,6 @@ onMounted(() => {
 
         }
     );
-    // dividerMotionTransform = 
     dividerMotionPosition.forEach(
         (motionPosition, index) => {
             watch(motionPosition.constraint, (box) => {
@@ -174,21 +173,24 @@ function enableExtraCarousals(item: any, asString = false) {
 
         </div> -->
         <UCarousel ref="constraintRef" arrows dots loop v-slot="{ item, index }" :items="carousalsContent"
-            class="z-0 w-full border-2" :watchDrag="false" :ui="{
+            class="z-0 w-full border-2" :watchDrag="false" prev-icon="i-fluent-chevron-left-20-filled"
+            next-icon="i-fluent-chevron-right-20-filled" :ui="{
                 controls: 'carousal-control absolute -top-12 sm:-top-14 -inset-x-6 sm:inset-x-12',
                 dots: 'top-1',
                 dot: 'w-6 h-1'
             }">
 
-            <UseElementSize v-slot="{ width, height }" class="flex justify-center border-green-500">
-                <!-- <motion.div drag :dragConstraints="dragConstraints(width, height)" :style="{ x, y }" -->
+            <UseElementSize v-slot="{ width, height }" class="flex justify-center">
+                <!-- divider drag handle -->
                 <motion.div drag :dragConstraints="getDragConstraints(index, width, height, enableExtraCarousals(item))"
                     :dragElastic="0.2"
                     :style="{ x: dividerMotionPosition[index]!.xPosValue, y: dividerMotionPosition[index]!.yPosValue }"
                     class="absolute bg-neutral-100 rounded-full self-center
-                                flex text-neutral-800 z-2">
-                    <UIcon name="i-icon-park-outline-direction-adjustment-two" size="30" />
+                flex text-neutral-800 z-2">
+                    <UIcon v-if="(item as CardData[]).length > 2" name="i-fluent-drag-20-regular" size="30" />
+                    <UIcon v-else name="i-fluent-arrow-bidirectional-left-right-20-regular" size="30" />
                 </motion.div>
+                <!-- divider drag handle -->
 
                 <!-- visual divider lines -->
                 <motion.div :class='`absolute self-center border-1 z-1 h-full`'
@@ -201,7 +203,7 @@ function enableExtraCarousals(item: any, asString = false) {
                 <motion.div v-if="showPageCard" v-for="(cardData, inner_index) in (item as CardData[])"
                     :class='`w-full ${(inner_index === 0 ? "" : "absolute")}`'
                     :style="{ clipPath: dividerMotionTransform[index][inner_index] }">
-                    <LazyPageCard hydrate-on-idle :pageCardData="cardData" :offset="index" class="w-full bg-cover" />
+                    <LazyPageCard hydrate-on-idle :pageCardData="cardData" :offset="index" />
                 </motion.div>
 
             </UseElementSize>

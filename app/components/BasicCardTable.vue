@@ -6,7 +6,7 @@ const props = defineProps<{
 </script>
 
 <template>
-    <div class="grid grid-cols-2 gap-2 justify-center divide-x-0 divide-y-2
+    <div class="grid grid-cols-2 justify-center divide-x-0 divide-y-2
             sm:divide-x-2 sm:divide-y-0 divide-double">
         <UCard v-for="contentData in content" variant="solid"
             class="bg-transparent rounded-none col-span-full sm:col-span-1 text-white">

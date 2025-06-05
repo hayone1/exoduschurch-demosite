@@ -75,5 +75,17 @@ onMounted(() => {
         <UContainer ref="mainContainerRef" class="px-0">
             <ContentRenderer v-if="pageCardsData" :value="pageCardsData" />
         </UContainer>
+        <ClientOnly>
+            <div ref="parallaxSectionParent" class="cursor-crosshair" :style="{ height: parallaxSectionHeight }">
+                <div v-for="(parallaxFlowData, index) in parallaxFlows" class="sticky top-0">
+                    <ParallaxFlow :parallaxFlow="parallaxFlowData" :scrollYProgress="parallaxFlowsProgress[index]!" />
+                </div>
+                <div v-for="(parallaxVariantData, index) in parallaxVariants" class="sticky top-0">
+                    <ParallaxVariant :parallaxVariant="parallaxVariantData"
+                        :scrollYProgress="parallaxVariantProgress[index]!" />
+                </div>
+            </div>
+            <TimedCarousel v-for="timedCarousal in timedCarousals" :carouselCardData="timedCarousal" :offset="0" />
+        </ClientOnly>
     </section>
 </template>
