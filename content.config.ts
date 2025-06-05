@@ -38,14 +38,6 @@ export default defineContentConfig({
         include: '*.md',
       },
     }),
-    pageCards: defineCollection({
-      type: 'page',
-      // source: 'pagecards/*.md',
-      source: {
-        repository: 'https://github.com/hayone1/exoduschurch-demodata',
-        include: 'pagecards/*.md',
-      },
-    }),
     cardTables: defineCollection({
       type: 'data',
       // source: 'cardtables/*.yml',

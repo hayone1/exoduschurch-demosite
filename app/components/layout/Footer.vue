@@ -42,7 +42,7 @@ const socialButtons: ButtonContent[] = [
   {
     label: "email",
     icon: "i-mdi-gmail",
-    color: "neutral",
+    color: "error",
     link: "mailto:marchintogrowth@gmail.com"
   },
   {
@@ -84,13 +84,13 @@ const socialButtons: ButtonContent[] = [
           </UDropdownMenu>
         </UButtonGroup>
       </div>
-      <div class="justify-self-center text-white col-span-full sm:col-span-1">
+      <div class="justify-self-center col-span-full sm:col-span-1">
         Making disciples of all nations
       </div>
       <UButtonGroup orientation="horizontal" class="col-span-full sm:col-span-1 sm:justify-self-end flex flex-wrap">
         <UButton v-for="(socialButton, index) in socialButtons" :icon="socialButton.icon"
           :to="socialButton.link" variant="link" :color="socialButton.color"
-          target="_blank" class="text-white" size="xl" />
+          target="_blank" class="text-xl text-white" size="xl" />
       </UButtonGroup>
     </div>
   </footer>

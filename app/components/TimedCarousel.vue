@@ -16,14 +16,6 @@ const route = useRoute();
 
 var carouselIndex = ref(carouselCardData.carousels?.length - 1);
 
-function overrideCarousalCardClass(cardData: CardData): CardData {
-    return {
-        ...cardData,
-        class: cardData.class + " max-w-80 aspect-1/1",
-        cardClass: "bg-transparent h-80 border-2"
-    };
-}
-
 const carousel = useTemplateRef('carousel');
 const autoPlayOptions = {
     delay: 2000,
@@ -80,7 +72,8 @@ onMounted(() => {
                             :icon="buttonData.icon" :to="buttonData.link" target="_blank" />
 
                     </div>
-                    <h2 v-if="carouselCardData.title" class="text-2xl font-semibold">
+                    <h2 v-if="carouselCardData.title" class="text-2xl font-semibold"
+                        :class="carouselCardData.titleClass">
                         {{ carouselCardData.title }}
                     </h2>
                 </div>

@@ -11,8 +11,8 @@ const props = defineProps<{
         <UCard v-for="contentData in content" variant="solid"
             class="bg-transparent rounded-none col-span-full sm:col-span-1 text-white">
             <template #header>
-                <div class="flex justify-center w-full border-2">
-                    <h2 v-if="contentData.title" class="text-2xl font-semibold">
+                <div class="flex justify-center border-2">
+                    <h2 v-if="contentData.title" class="text-2xl md:text-xl lg:text-2xl font-semibold">
                         {{ contentData.title }}
                     </h2>
                 </div>

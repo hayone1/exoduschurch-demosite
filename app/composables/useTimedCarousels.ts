@@ -7,6 +7,7 @@ export const useTimedCarousels = () => {
     return [
         {
             title: "Sermons of the Month",
+            titleClass: "light:text-neutral-800",
             footerButtonsParentClass: "justify-center",
             footerButtons: [
                 {

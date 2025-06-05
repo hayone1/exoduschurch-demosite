@@ -7,6 +7,7 @@ interface CardData {
     backdropClasses?: string[]
     contentJustification?: string
     title: string
+    titleClass?: string
     headerButtonsParentClass?: string
     headerButtons?: ButtonContent[]
     textWithImage?: InlineImageText

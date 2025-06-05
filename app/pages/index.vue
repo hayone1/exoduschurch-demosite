@@ -6,17 +6,11 @@ useSeoMeta({
     description: 'Making disciples of all nations',
     robots: 'index, follow'
 });
-const { data: pageCardsData } = await useAsyncData('pagecards', () =>
-    queryCollection('pageCards')
-        .path('/pagecards')
-        .first()
-)
-
 
 
 const parallaxFlows = useParallaxFlows();
 const parallaxVariants = useParallaxVariants();
-// const composedPageCardsData = useCards();
+const pageCardsData = useCards();
 const timedCarousals = useTimedCarousels();
 // the additions is to account for the extra empty section that aids in the sticky
 // scrolling
@@ -72,8 +66,11 @@ onMounted(() => {
 
 <template>
     <section>
-        <UContainer ref="mainContainerRef" class="px-0">
-            <ContentRenderer v-if="pageCardsData" :value="pageCardsData" />
+        <UContainer ref="mainContainerRef" class="px-0 grid grid-flow-row-dense grid-cols-10
+                        lg:grid-cols-9 gap-0 sm:gap-6">
+            <PageCard v-for="(cardData, index) in pageCardsData" :pageCardData="cardData"
+                :offset="index">
+            </PageCard>
         </UContainer>
         <ClientOnly>
             <div ref="parallaxSectionParent" class="cursor-crosshair" :style="{ height: parallaxSectionHeight }">

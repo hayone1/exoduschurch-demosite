@@ -81,7 +81,7 @@ const pageCardAnimation = (delayIndex: number): CardAnimation => {
             :class="pageCardData.cardClass">
 
             <template v-if="pageCardData.showHeader" #header>
-                <div :class="`flex w-full ${pageCardData.contentJustification}`">
+                <div class="flex w-full" :class="pageCardData.contentJustification">
                     <div v-if="pageCardData.headerButtons" class="flex flex-row flex-wrap gap-2"
                         :class="pageCardData.headerButtonsParentClass">
                         <UButton v-for="buttonData in pageCardData.headerButtons" :label="buttonData.label"
@@ -89,7 +89,8 @@ const pageCardAnimation = (delayIndex: number): CardAnimation => {
                             :icon="buttonData.icon" :to="buttonData.link" target="_blank" />
 
                     </div>
-                    <h2 v-if="pageCardData.title" class="text-2xl font-semibold">
+                    <h2 v-if="pageCardData.title" class="text-2xl font-semibold"
+                        :class="pageCardData.titleClass">
                         {{ pageCardData.title }}
                     </h2>
                 </div>

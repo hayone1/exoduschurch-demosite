@@ -28,6 +28,15 @@ export const useCards = () => {
                     link: '/about'
                 },
             ],
+            footerButtonsParentClass: "pt-10",
+            footerButtons: [
+                {
+                    label: "It's Supernatural School SZN! Learn more →",
+                    variant: "solid",
+                    class: "rounded-full text-green-600 bg-neutral-800",
+                    link: "https://instagram.com/p/DKXwS_7oa0a/"
+                }
+            ],
             class: "z-0 flex flex-row col-span-full -translate-y-3",
             cardClass: "mt-20 bg-gradient-to-r h-[70vh]",
             variant: "solid",
@@ -35,24 +44,19 @@ export const useCards = () => {
             showFooter: true,
             showHeader: true,
             backdropClasses: [
-                "bg-cover mask-repeat-x mask-[url(/images/vector/brush-mask-1-from-top.svg)] bg-[url(/images/main/supernatural-school-december-7.jpg)]",
+                "bg-cover mask-contain mask-repeat-x mask-[url(/images/vector/brush-mask-1-from-top.svg)] bg-[url(/images/main/supernatural-school-december-7.jpg)]",
                 "bg-cover mask-t-from-60% mask-t-to-70% sm:mask-t-from-10% sm:mask-t-to-60% bg-[url(/images/main/supernatural-school-december-7.jpg)]",
-                "backdrop-grayscale mask-r-from-30% mask-r-to-50%",
+                "backdrop-grayscale mask-t-from-60% mask-t-to-80% mask-r-from-30% mask-r-to-50%"
             ]
         },
         {
             // title: "Testimonies",
             contentJustification: "justify-center",
-            footerButtonsParentClass: "justify-center",
-            // footerButtons: [
-            //     { label: "Share a testimony" },
-            //     { label: "View testimonies", variant: 'outline' },
-            // ],
-            class: "col-span-full md:col-span-5 lg:col-span-3",
-            cardClass: "bg-transparent",
+            class: "col-span-full md:col-span-5 lg:col-span-3 -translate-y-3",
+            cardClass: "h-80 bg-transparent flex justify-center items-center",
             variant: "solid",
             //should apply to all button?
-            bodyButtonsParentClass: "justify-center h-80 md:pt-20",
+            bodyButtonsParentClass: "justify-center",
             bodyButtons: [{
                 label: "Testimonies",
                 variant: 'link',
@@ -60,27 +64,17 @@ export const useCards = () => {
                 // link: 'https://bit.ly/exodus_testimonies',
                 class: "text-5xl md:text-4xl font-extrabold text-neutral-600"
             }],
-            // showFooter: true,
-            // showHeader: true,
             backdropClasses: [
                 "mask-contain mask-center mask-no-repeat -z-1 mask-[url(/images/vector/brush-mask-0-linear.svg)] bg-white"
             ]
         },
         {
-            // title: "Testimonies",
+            // title: "Socials",
             contentJustification: "justify-center",
-            footerButtonsParentClass: "justify-center",
-            footerButtons: [
-                {
-                    label: "Follow Us",
-                    variant: "soft",
-                    class: "text-xl bg-transparent"
-                },
-            ],
-            class: "col-span-full md:col-span-5 lg:col-span-3",
-            cardClass: "bg-transparent",
+            class: "col-span-full md:col-span-5 lg:col-span-3 -translate-y-3",
+            cardClass: "h-80 bg-transparent flex justify-center items-center",
             variant: "solid",
-            bodyButtonsParentClass: "justify-center h-80 pt-30 md:pb-5",
+            bodyButtonsParentClass: "justify-center h-40",
             bodyButtons: [
                 {
                     icon: "i-mdi-instagram",
@@ -101,42 +95,39 @@ export const useCards = () => {
                     link: "https://www.youtube.com/@ExodusMissions"
                 },
             ],
-            showFooter: true,
-            // showHeader: true,
-            backdropClasses: [
-                "mask-contain mask-center mask-no-repeat -z-1 mask-[url(/images/vector/brush-mask-0-linear.svg)] bg-white"
-            ]
-        },
-        {
-            contentJustification: "justify-center",
-            footerButtonsParentClass: "justify-center",
-            // footerButtons: [
-            //     { label: "Join a unit" },
-            // ],
-            class: "col-span-full md:col-span-5 lg:col-span-3",
-            cardClass: "bg-transparent",
-            variant: "solid",
-            //should apply to all button?
-            bodyButtonsParentClass: "justify-center h-80 md:pt-20",
-            bodyButtons: [{
-                label: "Serve",
-                variant: 'link',
-                class: "text-6xl md:text-4xl font-extrabold text-white-600",
-                link: "/community#technical-unit"
-            }],
-            // showFooter: true,
-            // showHeader: true,
             backdropClasses: [
                 "mask-contain mask-center mask-no-repeat -z-1 mask-[url(/images/vector/brush-mask-0-linear.svg)] bg-neutral-600/30"
             ]
         },
         {
+            // title: "Service Units",
             contentJustification: "justify-center",
-            titleButton: {
-                label: "location",
+            class: "col-span-full md:col-span-5 lg:col-span-3 -translate-y-3",
+            cardClass: "h-80 bg-transparent flex justify-center items-center",
+            variant: "solid",
+            bodyButtonsParentClass: "justify-center",
+            bodyButtons: [{
+                label: "Serve",
+                variant: 'link',
+                class: "text-5xl font-extrabold text-neutral-600",
+                link: "/community#technical-unit"
+            }],
+            backdropClasses: [
+                "mask-contain mask-center mask-no-repeat -z-1 mask-[url(/images/vector/brush-mask-0-linear.svg)] bg-white"
+            ]
+        },
+        {
+            // title: "Service Times",
+            contentJustification: "justify-center",
+            class: "col-span-full md:col-span-5 lg:col-span-4 -translate-y-3",
+            cardClass: "dark:bg-transparent md:h-100",
+            variant: "solid",
+            headerButtons: [{
+                variant: "link",
                 icon: "i-fluent-location-ripple-20-regular",
+                class: "text-5xl text-white",
                 link: "https://maps.app.goo.gl/iSkjrBP6eAdRfNX88"
-            } as ButtonContent,
+            }],
             showHeader: true,
             bodies: [
                 {
@@ -150,18 +141,19 @@ export const useCards = () => {
                     footer: "6:00 PM"
                 },
             ],
-            class: "col-span-full md:col-span-5 lg:col-span-4",
-            cardClass: "bg-transparent",
             backdropClasses: [
                 "bg-cover bg-[url(/images/vector/navigation-illustration.svg)] mask-x-from-20% mask-y-from-20%"
             ],
-            variant: "solid"
+
         },
         {
+            // title: "Pastor",
             body: "Meet our Pastor",
             bodyClass: "text-6xl",
             contentJustification: "justify-start",
-            // backgroundImage: "bg-[linear-gradient(to_right,_#1e3a8a_30%,_transparent_70%),url('/images/worship-stock-image-1.jpg')]",
+            class: "col-span-full lg:col-span-5 flex flex-row h-100 border-2 -translate-y-3",
+            cardClass: "mt-20 bg-gradient-to-r",
+            variant: "solid",
             bodyButtons: [
                 {
                     label: "Abhulimen Desmond",
@@ -169,21 +161,14 @@ export const useCards = () => {
                     link: '/about#meet-out-pastor'
                 },
             ],
-            // body: "making disciples of all nations",
-            class: "col-span-full lg:col-span-5 flex flex-row h-100 border-2",
-            cardClass: "mt-20 bg-gradient-to-r",
-            variant: "solid",
-            // showFooter: true,
-            // showHeader: true,
             backdropClasses: [
-                `bg-cover bg-[url(/images/people/pastor-desmond-1.jpg)] sm:bg-[url(/images/people/pastor-desmond-3-shape.jpg)] bg-right h-full`,
-                // "bg-cover mask-t-from-50% mask-t-to-70% sm:mask-t-from-10% sm:mask-t-to-60%  bg-[url(/images/worship-stock-image-1.jpg)]",
-                // "backdrop-grayscale mask-r-from-30% mask-r-to-50%",
+                "bg-cover bg-[url(/images/people/pastor-desmond-1.jpg)] sm:bg-[url(/images/people/pastor-desmond-3-shape.jpg)] bg-right h-full",
                 "backdrop-blur-xs sm:backdrop-blur-lg mask-cover mask-[url(/images/people/pastor-desmond-1-mask.png)] sm:mask-[url(/images/people/pastor-desmond-3-mask.png)] mask-right h-full",
             ]
         },
         {
             title: "Special Meetings",
+            titleClass: "light:text-neutral-800",
             showHeader: true,
             contentJustification: "justify-center",
             cardAnimation: defaultCarousalAnimation,
@@ -196,12 +181,13 @@ export const useCards = () => {
                             variant: 'link',
                             color: 'secondary',
                             class: "text-3xl md:text-4xl font-extrabold text-white z-0",
-                            link: "/events#supernatural-school"
+                            link: "https://instagram.com/p/DKXwS_7oa0a/"
                         }],
                         backdropClasses: [
-                            "-z-2 bg-cover bg-center bg-[url(/images/events/supernatural-school-august-2025.jpg)]",
-                            "-z-2 bg-cover bg-center bg-[url(/images/events/supernatural-school-december-2.jpg)]",
-                            "-z-1 backdrop-blur-xs backdrop-opacity-100"
+                            "-z-1 bg-cover bg-center bg-[url(/images/events/supernatural-school-december-2.jpg)]",
+                            "-z-1 bg-cover bg-center bg-[url(/images/events/supernatural-school-august-2025.jpg)] sm:hidden",
+                            "-z-1 backdrop-blur-xs hidden sm:block",
+                            "-z-1 backdrop-grayscale sm:hidden"
                         ],
                     },
                     {
