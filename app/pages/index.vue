@@ -7,16 +7,16 @@ useSeoMeta({
     robots: 'index, follow'
 });
 const { data: pageCardsData } = await useAsyncData('pagecards', () =>
-  queryCollection('pageCards')
-    .path('/pagecards')
-    .first()
+    queryCollection('pageCards')
+        .path('/pagecards')
+        .first()
 )
 
 
 
 const parallaxFlows = useParallaxFlows();
 const parallaxVariants = useParallaxVariants();
-// const pageCardsData = useCards();
+// const composedPageCardsData = useCards();
 const timedCarousals = useTimedCarousels();
 // the additions is to account for the extra empty section that aids in the sticky
 // scrolling
