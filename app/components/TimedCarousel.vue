@@ -14,62 +14,6 @@ const {
 }>();
 const route = useRoute();
 
-const pageCardAnimation = (delayIndex: number): CardAnimation => {
-    return carouselCardData.cardAnimation ?? {
-        offscreen: {
-            opacity: 0,
-            y: 300,
-            // opacity: .5,
-            filter: "blur(10px)",
-        },
-        onscreen: {
-            opacity: 1,
-            y: 0,
-            // opacity: 1,
-            filter: "blur(0px)",
-            transition: {
-                type: "spring",
-                // bounce: 0.3,
-                duration: .8,
-                delay: (delayIndex) / 10
-            },
-        },
-        backdropOffscreen: {
-            opacity: 0,
-            // backdropFilter: "blur(15px)"
-        },
-        backdropOnScreen: {
-            // backdropFilter: "blur(0px)",
-            opacity: 1,
-            transition: {
-                duration: .6,
-                //will happen after the text animation is complete
-                delay: ((delayIndex) / 10) + .4,
-                ease: "easeOut"
-            },
-        },
-        textOffscreen: {
-            opacity: 0,
-            y: 50,
-            // backdropFilter: "blur(15px)"
-        },
-        textOnScreen: {
-            y: 0,
-            // backdropFilter: "blur(0px)",
-            opacity: 1,
-            transition: {
-                duration: .6,
-                //will finish after the backdrop animation is complete
-                delay: ((delayIndex) / 10) + .8,
-                ease: "easeOut"
-            },
-        },
-
-    };
-
-
-}
-
 var carouselIndex = ref(carouselCardData.carousels?.length - 1);
 
 function overrideCarousalCardClass(cardData: CardData): CardData {
@@ -129,16 +73,24 @@ onMounted(() => {
             :variant="carouselCardData.variant" :class="carouselCardData.cardClass">
             <template v-if="carouselCardData.showHeader" #header>
                 <div :class="`flex w-full ${carouselCardData.contentJustification}`">
-                    <UButton v-if="carouselCardData.titleIcon" :icon="carouselCardData.titleIcon" size="xl" variant="link"
-                        class="text-6xl text-white" :to="carouselCardData.titleIconLink" target="_blank" />
-                    <h2 v-if="carouselCardData.title"
-                        class="text-2xl font-semibold">{{ carouselCardData.title }}</h2>
+                    <div v-if="carouselCardData.headerButtons" class="flex flex-row flex-wrap gap-2"
+                        :class="carouselCardData.headerButtonsParentClass">
+                        <UButton v-for="buttonData in carouselCardData.headerButtons" :label="buttonData.label"
+                            :variant="buttonData.variant" :color="buttonData.color" :class="buttonData.class"
+                            :icon="buttonData.icon" :to="buttonData.link" target="_blank" />
+
+                    </div>
+                    <h2 v-if="carouselCardData.title" class="text-2xl font-semibold">
+                        {{ carouselCardData.title }}
+                    </h2>
                 </div>
             </template>
 
             <div class="w-full flex justify-center">
-                <UCarousel ref="carousel" v-if="carouselCardData.carousels" arrows loop :autoplay="autoPlayOptions"
-                        :items="carouselCardData.carousels" v-slot="{ item, index }" :ui="carouselCardData.carouselsUi"
+                <UCarousel ref="carousel" v-if="carouselCardData.carousels" arrows loop 
+                        :autoplay="autoPlayOptions"
+                        :items="carouselCardData.carousels" v-slot="{ item, index }"
+                        :ui="carouselCardData.carouselsUi"
                         :class="carouselCardData.carouselsClass">
                         <PageCard :pageCardData="(item as CardData)" :offset="index" />
                     </UCarousel>
@@ -159,31 +111,3 @@ onMounted(() => {
         
     </div>
 </template>
-
-
-<style scoped></style>
-
-<style scoped>
-.logo-title {
-    font-family: 'Roboto', sans-serif;
-}
-
-.timed-card {
-    position: absolute;
-    height: 15rem;
-    align-self: end;
-    /* margin-bottom: 1rem; */
-}
-
-.timed-card[data-first="true"] {
-    position: relative;
-    /* border-width: 4px; */
-    height: 100%;
-    width: 100%;
-    align-self: center;
-    margin-bottom: 0;
-    /* transform: scale(0.5); */
-}
-
-/* .neumorphic */
-</style>

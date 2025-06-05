@@ -7,7 +7,8 @@ interface CardData {
     backdropClasses?: string[]
     contentJustification?: string
     title: string
-    titleButton?: ButtonContent
+    headerButtonsParentClass?: string
+    headerButtons?: ButtonContent[]
     textWithImage?: InlineImageText
     bodyImage?: string
     bodyButtonsParentClass?: string
@@ -25,7 +26,9 @@ interface CardData {
     showFooter?: boolean
     showHeader?: boolean
     footer?: string
-    class: string
+    class?: string
+    /**Use altclass if class is not usable */
+    altclass?: string
     cardClass?: string
     variant?: "outline" | "subtle" | "solid" | "soft"
     cardAnimation?: CardAnimation

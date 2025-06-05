@@ -35,28 +35,28 @@ export const useTimedCarousels = () => {
                     title: "A Christmas thought: The most precious gift",
                     // cardClass: "bg-transparent",
                     // contentJustification: "justify-center",
-                    class: "rounded-lg bg-cover bg-center bg-no-repeat bg-[url(/images/sermons/a-christmas-thought-the-most-precious-gift.jpg)]",
+                    altclass: "rounded-lg bg-cover bg-center bg-no-repeat bg-[url(/images/sermons/a-christmas-thought-the-most-precious-gift.jpg)]",
                     footerButtons: [
                         { label: "Listen" },
                     ],
                 },
                 {
                     title: "Adventures in the miraculous",
-                    class: "rounded-lg bg-cover bg-center bg-no-repeat bg-[url(/images/sermons/adventures-in-the-miraculous.jpg)]",
+                    altclass: "rounded-lg bg-cover bg-center bg-no-repeat bg-[url(/images/sermons/adventures-in-the-miraculous.jpg)]",
                     footerButtons: [
                         { label: "Listen" },
                     ],
                 },
                 {
                     title: "Burden of redemption",
-                    class: "rounded-lg bg-cover bg-start bg-no-repeat bg-[url(/images/sermons/burden-of-redemption.jpg)]",
+                    altclass: "rounded-lg bg-cover bg-start bg-no-repeat bg-[url(/images/sermons/burden-of-redemption.jpg)]",
                     footerButtons: [
                         { label: "Listen" },
                     ],
                 },
                 {
                     title: "God's will aand you",
-                    class: "rounded-lg bg-cover bg-center bg-no-repeat bg-[url(/images/sermons/God-will-and-you.jpg)]",
+                    altclass: "rounded-lg bg-cover bg-center bg-no-repeat bg-[url(/images/sermons/God-will-and-you.jpg)]",
                     footerButtons: [
                         { label: "Listen" },
                     ],
@@ -65,7 +65,7 @@ export const useTimedCarousels = () => {
                     title: "Heartbeats",
                     // cardClass: "bg-transparent",
                     // contentJustification: "justify-center",
-                    class: "rounded-lg bg-cover bg-start bg-no-repeat bg-[url(/images/sermons/heartbeats.jpg)]",
+                    altclass: "rounded-lg bg-cover bg-start bg-no-repeat bg-[url(/images/sermons/heartbeats.jpg)]",
                     footerButtonsParentClass: "justify-center",
                     footerButtons: [
                         { label: "Listen" },
@@ -75,7 +75,7 @@ export const useTimedCarousels = () => {
                     title: "Help and favour in God",
                     // cardClass: "bg-transparent",
                     // contentJustification: "justify-center",
-                    class: "rounded-lg bg-cover bg-center bg-no-repeat bg-[url(/images/sermons/help-and-favour-in-God.jpg)]",
+                    altclass: "rounded-lg bg-cover bg-center bg-no-repeat bg-[url(/images/sermons/help-and-favour-in-God.jpg)]",
                     footerButtonsParentClass: "justify-center",
                     footerButtons: [
                         { label: "Listen" },
@@ -85,7 +85,7 @@ export const useTimedCarousels = () => {
                     title: "In New Seasons",
                     // cardClass: "bg-transparent",
                     // contentJustification: "justify-center",
-                    class: "rounded-lg bg-cover bg-center bg-no-repeat bg-[url(/images/sermons/in-new-seasons.jpg)]",
+                    altclass: "rounded-lg bg-cover bg-center bg-no-repeat bg-[url(/images/sermons/in-new-seasons.jpg)]",
                     footerButtonsParentClass: "justify-center",
                     footerButtons: [
                         { label: "Listen" },
@@ -95,7 +95,7 @@ export const useTimedCarousels = () => {
                     title: "Prayer Focused: Making power available",
                     // cardClass: "bg-transparent",
                     // contentJustification: "justify-center",
-                    class: "rounded-lg bg-cover bg-center bg-no-repeat bg-[url(/images/sermons/prayer-focused-making-power-available.jpg)]",
+                    altclass: "rounded-lg bg-cover bg-center bg-no-repeat bg-[url(/images/sermons/prayer-focused-making-power-available.jpg)]",
                     footerButtonsParentClass: "justify-center",
                     footerButtons: [
                         { label: "Listen" },
@@ -105,7 +105,7 @@ export const useTimedCarousels = () => {
                     title: "Recovery: Bouncing back from bondage",
                     // cardClass: "bg-transparent",
                     // contentJustification: "justify-center",
-                    class: "rounded-lg bg-cover bg-start bg-no-repeat bg-[url(/images/sermons/recovery-bouncing-back-from-bondage.jpg)]",
+                    altclass: "rounded-lg bg-cover bg-start bg-no-repeat bg-[url(/images/sermons/recovery-bouncing-back-from-bondage.jpg)]",
                     footerButtonsParentClass: "justify-center",
                     footerButtons: [
                         { label: "Listen" },
@@ -115,7 +115,7 @@ export const useTimedCarousels = () => {
                     title: "Speedy Deliverance",
                     // cardClass: "bg-transparent",
                     // contentJustification: "justify-center",
-                    class: "rounded-lg bg-cover bg-center bg-no-repeat bg-[url(/images/sermons/speedy-deliverance.jpg)]",
+                    altclass: "rounded-lg bg-cover bg-center bg-no-repeat bg-[url(/images/sermons/speedy-deliverance.jpg)]",
                     footerButtonsParentClass: "justify-center",
                     footerButtons: [
                         { label: "Listen" },
@@ -125,7 +125,7 @@ export const useTimedCarousels = () => {
                     title: "The amazing gosepl of christ",
                     // cardClass: "bg-transparent",
                     // contentJustification: "justify-center",
-                    class: "rounded-lg bg-cover bg-center bg-no-repeat bg-[url(/images/sermons/the-amazing-gospel-of-christ.jpg)]",
+                    altclass: "rounded-lg bg-cover bg-center bg-no-repeat bg-[url(/images/sermons/the-amazing-gospel-of-christ.jpg)]",
                     footerButtonsParentClass: "justify-center",
                     footerButtons: [
                         { label: "Listen" },
@@ -135,7 +135,7 @@ export const useTimedCarousels = () => {
                     title: "The Spirit of faith",
                     // cardClass: "bg-transparent",
                     // contentJustification: "justify-center",
-                    class: "rounded-lg bg-cover bg-center bg-no-repeat bg-[url(/images/sermons/the-spirit-of-faith.jpg)]",
+                    altclass: "rounded-lg bg-cover bg-center bg-no-repeat bg-[url(/images/sermons/the-spirit-of-faith.jpg)]",
                     footerButtonsParentClass: "justify-center",
                     footerButtons: [
                         { label: "Listen" },
@@ -147,10 +147,12 @@ export const useTimedCarousels = () => {
                     cardAnimation: defaultCardAnimation,
                     contentJustification: "justify-center",
                     showFooter: true,
+                    footerButtons: card.footerButtons.map(buttonData => ({
+                        ...buttonData,
+                        color: "neutral"
+                    })),
                     footerButtonsParentClass: "pt-20 justify-center",
                     carousels: [],
-                    // showHeader: true,
-                    // class: "border-2",
                     cardClass: "bg-transparent h-50 w-full",
                     variant: "solid",
                     // bodyButtonsParentClass: "justify-center h-80",
