@@ -90,7 +90,7 @@ const navItems = [
 ].map(navItem => {
   //avatar is needed for light mode (remove icon)
   // and icon alone is needed for dark mode
-  const navClass = "light:text-black"
+  const navClass = "dark:text-white light:text-black"
   const children = navItem.children?.map(child => ({
     ...child, class: navClass,
     onSelect: collapseNav
