@@ -187,7 +187,7 @@ pageCardData:
         variant: solid
         bodyButtonsParentClass: justify-center h-80
         backdropClasses:
-          - -z-2 bg-cover bg-center bg-[url(/images/events/supernatural-school-december-2.jpg)]
+          - -z-2 bg-cover bg-center bg-[url(/images/events/supernatural-school-2025.jpg)] sm:bg-[url(/images/events/supernatural-school-december-2.jpg)]
           - -z-1 backdrop-blur-xs backdrop-opacity-100
       - title: December
         bodyButtons:
