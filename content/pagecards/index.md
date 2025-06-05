@@ -190,7 +190,6 @@ pageCardData:
           url: /images/events/supernatural-school-december-2.jpg
           class: -top-1/2
         backdropClasses:
-          #- -z-1 bg-cover bg-center bg-[url(/images/events/supernatural-school-december-2025.jpg)]
           - -z-1 bg-cover bg-center bg-[url(/images/events/supernatural-school-december-2.jpg)]
           - -z-1 bg-cover bg-center bg-[url(/images/events/supernatural-school-august-2025.jpg)] sm:hidden
           - -z-1 backdrop-blur-xs hidden sm:block
