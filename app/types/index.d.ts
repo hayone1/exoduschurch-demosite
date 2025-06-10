@@ -12,6 +12,7 @@ interface CardData {
     headerButtons?: ButtonContent[]
     textWithImage?: InlineImageText
     bodyImage?: string
+    bodyRibbon?: string
     bodyButtonsParentClass?: string
     bodyButtons?: ButtonContent[]
     footerButtonsParentClass?: string

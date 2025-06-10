@@ -56,6 +56,7 @@ export const useCards = () => {
             cardClass: "h-80 bg-transparent flex justify-center items-center",
             variant: "solid",
             //should apply to all button?
+            bodyRibbon: "true",
             bodyButtonsParentClass: "justify-center",
             bodyButtons: [{
                 label: "Testimonies",

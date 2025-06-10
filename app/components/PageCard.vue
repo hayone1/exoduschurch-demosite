@@ -106,7 +106,7 @@ const pageCardAnimation = (delayIndex: number): CardAnimation => {
                     <ImgCompareCarousal v-if="pageCardData.comparisonCarousals"
                         :carousalsContent="pageCardData.comparisonCarousals" />
                 </ClientOnly>
-
+                <RibbonBackground v-if="pageCardData.bodyRibbon" />
                 <p v-if="pageCardData.body" :class="pageCardData.bodyClass">{{ pageCardData.body }}</p>
 
                 <BasicCardTable v-if="pageCardData.bodies" :content="pageCardData.bodies" />
