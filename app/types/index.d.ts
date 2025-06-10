@@ -4,7 +4,9 @@ import type { StyleValue } from 'vue';
 interface CardData {
     backgroundImage?: string
     motionStyle?: Record<string, string>
+    backdropParentClass?: string
     backdropClasses?: string[]
+    backgroundImages?: ImageContent[]
     contentJustification?: string
     title: string
     titleClass?: string
@@ -89,6 +91,7 @@ interface ButtonContent {
 }
 interface ImageContent {
     url: string
+    class?: string
     aspectRatio?: string
     placeholder?: string
     alt?: string
@@ -101,6 +104,7 @@ interface BasicContent {
 }
 
 interface InlineImageText {
+    class?: string
     pretext?: string
     imageUrl?: string
     postText?: string

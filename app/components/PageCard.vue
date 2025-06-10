@@ -70,14 +70,27 @@ const pageCardAnimation = (delayIndex: number): CardAnimation => {
     <motion.div class="sm:rounded-lg" :class="pageCardData.class ?? pageCardData.altclass"
         :initial="pageCardAnimation(offset).offscreen" :whileInView="pageCardAnimation(offset).onscreen"
         :inViewOptions="{ once: true, margin: '50% 0px' }">
-        <div v-if="pageCardData.backdropClasses" class="absolute size-full pointer-events-none top-0">
+        <div class="absolute size-full pointer-events-none top-0 rounded-lg"
+            :class="pageCardData.backdropParentClass">
+            <UCarousel v-if="pageCardData.backgroundImages" v-slot="{ item }" fade :autoplay="{ delay: 5000 }"
+                :items="pageCardData.backgroundImages" class="size-full">
+                <div :class="item.class">
+                    <NuxtImg :src="item.url" :alt="item.alt" :placeholder="item.placeholder"
+                        loading="lazy" fit="cover" />
+                </div>
+            </UCarousel>
+
+        </div>
+        <div v-if="pageCardData.backdropClasses"
+            class="absolute size-full pointer-events-none top-0 overflow-clip rounded-lg"
+            :class="pageCardData.backdropParentClass">
             <motion.div v-for="backdropClass in pageCardData.backdropClasses"
                 class="absolute size-full rounded-none sm:rounded-lg" :class="backdropClass"
                 :initial="pageCardAnimation(offset).backdropOffscreen"
                 :whileInView="pageCardAnimation(offset).backdropOnScreen" :inViewOptions="{ once: true }" />
 
         </div>
-        <UCard :variant="pageCardData.variant" class="basis-2/3 text-white z-3 rounded-none sm:rounded-lg"
+        <UCard :variant="pageCardData.variant" class="text-white z-3 rounded-none sm:rounded-lg"
             :class="pageCardData.cardClass">
 
             <template v-if="pageCardData.showHeader" #header>
@@ -89,18 +102,21 @@ const pageCardAnimation = (delayIndex: number): CardAnimation => {
                             :icon="buttonData.icon" :to="buttonData.link" target="_blank" />
 
                     </div>
-                    <h2 v-if="pageCardData.title" class="text-2xl font-semibold"
-                        :class="pageCardData.titleClass">
+                    <h2 v-if="pageCardData.title" class="text-2xl font-semibold" :class="pageCardData.titleClass">
                         {{ pageCardData.title }}
                     </h2>
                 </div>
             </template>
 
             <motion.div :data-name="`main-card-body-${offset}`" :initial="pageCardAnimation(offset).textOffscreen"
-                :class="`flex flex-col ${pageCardData.contentJustification}`"
+                class="flex flex-col" :class="pageCardData.contentJustification"
                 :whileInView="pageCardAnimation(offset).textOnScreen" :inViewOptions="{ once: true }">
 
-                <TextWithImage v-if="pageCardData.textWithImage" :textWithImage="pageCardData.textWithImage" />
+                <p v-if="pageCardData.body" class="flex justify-center" :class="pageCardData.bodyClass">
+                    {{ pageCardData.body }}
+                </p>
+                <TextWithImage v-if="pageCardData.textWithImage" class="flex justify-center"
+                    :textWithImage="pageCardData.textWithImage" />
 
                 <ClientOnly>
                     <ImgCompareCarousal v-if="pageCardData.comparisonCarousals"
@@ -121,12 +137,12 @@ const pageCardAnimation = (delayIndex: number): CardAnimation => {
 
             </motion.div>
 
-            <template v-if="pageCardData.showFooter" #footer>
-                <h2 v-if="pageCardData.footer" :class="`w-full flex ${pageCardData.contentJustification}`">
+            <template v-if="pageCardData.showFooter">
+                <h2 v-if="pageCardData.footer" class="w-full flex" :class="pageCardData.contentJustification">
                     {{ pageCardData.footer }}
                 </h2>
-                <div v-if="pageCardData.footerButtons"
-                    :class="`flex flex-row flex-wrap gap-2 ${pageCardData.footerButtonsParentClass}`">
+                <div v-if="pageCardData.footerButtons" class="flex flex-row flex-wrap gap-2"
+                    :class="pageCardData.footerButtonsParentClass">
                     <UButton v-for="buttonData in pageCardData.footerButtons" :label="buttonData.label"
                         :variant="buttonData.variant" :color="buttonData.color" :class="buttonData.class"
                         :icon="buttonData.icon" :to="buttonData.link" target="_blank" />

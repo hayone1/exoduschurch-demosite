@@ -6,7 +6,8 @@ const props = defineProps<{
 </script>
 
 <template>
-    <div class="flex flex-row text-3xl sm:text-5xl logo-title">
+    <div class="flex flex-row text-4xl sm:text-6xl"
+        :class="textWithImage.class">
         <span v-if="textWithImage.pretext">
             {{ textWithImage.pretext }}
         </span>
