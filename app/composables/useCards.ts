@@ -59,10 +59,11 @@ export const useCards = () => {
             bodyButtonsParentClass: "justify-center",
             bodyButtons: [{
                 label: "Testimonies",
+                icon: "i-fluent-person-starburst-20-filled",
                 variant: 'link',
                 link: '/testimonies-list',
                 // link: 'https://bit.ly/exodus_testimonies',
-                class: "text-5xl md:text-4xl font-extrabold text-neutral-600"
+                class: "flex flex-col text-5xl md:text-4xl font-extrabold text-neutral-600"
             }],
             backdropClasses: [
                 "mask-contain mask-center mask-no-repeat -z-1 mask-[url(/images/vector/brush-mask-0-linear.svg)] bg-white"
