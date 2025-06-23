@@ -8,16 +8,18 @@ export const useCards = () => {
     return [
         {
             // backdropParentClass: "overflow-clip",
-            backdropParentClass: "overflow-clip mask-cover mask-repeat-x mask-[url(/images/vector/brush-mask-1-from-top-stretched.svg)]",
+            class: "z-0 flex flex-row col-span-full light:-translate-y-3 justify-center",
+            cardClass: "mt-20 bg-gradient-to-r h-[70vh]",
+            backdropParentClass: "overflow-clip mask-cover mask-repeat-x light:mask-[url(/images/vector/brush-mask-1-from-top-stretched.svg)]",
             backgroundImages: [
                 {
                     url: "/images/main/supernatural-school-december-7.jpg",
-                    class: "w-3/1 sm:w-1/1"
+                    class: "w-3/1 md:w-1/1"
                 },
-                // { 
-                //     url: "/images/events/supernatural-school-december-nkire.jpg",
-                //     class: ""
-                // },
+                { 
+                    url: "/images/stock/worship-stock-image-1.jpg",
+                    class: "w-3/1 md:w-1/1"
+                },
             ],
             body: "Welcome To",
             bodyClass: "text-xl",
@@ -52,8 +54,6 @@ export const useCards = () => {
                     link: "https://instagram.com/p/DKXwS_7oa0a/"
                 }
             ],
-            class: "z-0 flex flex-row col-span-full -translate-y-3 justify-center",
-            cardClass: "mt-20 bg-gradient-to-r h-[70vh]",
             variant: "solid",
             // footer: "Making disciples of all nations.",
             showFooter: true,

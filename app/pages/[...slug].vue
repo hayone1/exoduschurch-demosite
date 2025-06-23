@@ -18,9 +18,9 @@ useSeoMeta({
 <template>
     <br />
     <UContainer>
-        <UCard v-if="page" variant="subtle" class="justify-center">
+        <UCard v-if="page" variant="solid" class="justify-center light:bg-neutral-800 dark:bg-neutral-950/30">
             <template v-if="page?.title" #header>
-                <h1 class="w-full text-center text-4xl">
+                <h1 class="w-full text-center text-white text-4xl">
                     {{ page.title }}
                 </h1>
             </template>

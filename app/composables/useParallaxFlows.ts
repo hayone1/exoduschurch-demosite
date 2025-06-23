@@ -16,8 +16,9 @@ export const useParallaxFlows = () => {
                 ['node-ia','node-i'],
             ],
             backGroundColor: computed(() => colorMode.value === 'light' ? {
-                parentBackground: "",
-                patternBackground: "#1B1C1E"
+                parentBackground: "bg-black",
+                patternBackground: ""
+                // patternBackground: "#1B1C1E"
             } : {
                 parentBackground: "bg-black",
                 patternBackground: ""

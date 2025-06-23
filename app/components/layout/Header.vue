@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from '@nuxt/ui';
-import { onClickOutside } from '@vueuse/core';
+import { onClickOutside, useWindowScroll } from '@vueuse/core';
 
 const route = useRoute();
+const scroll = useWindowScroll();
 const navOpen = ref(false);
 const mainDiv = useTemplateRef<HTMLElement>('mainDiv');
 const navItems = [
@@ -115,11 +116,30 @@ function collapseNav() {
 onClickOutside(mainDiv, () => {
   collapseNav()
 });
+
+onMounted(() => {
+  console.log("Scroll position:", scroll.y.value);
+})
+const mobileBackdrop = ref("backdrop-blur-lg");
+const navIconColor = ref("text-white");
+
+watch(scroll.y, scrollValue => {
+  if (scrollValue > 30) {
+    mobileBackdrop.value = "backdrop-blur-lg"
+    navIconColor.value = "light:text-white";
+  }
+  else {
+    mobileBackdrop.value = "backdrop-filter-none"
+    navIconColor.value = "light:text-black";
+  }
+})
+
 </script>
 
 <template>
   <div ref="mainDiv" class="flex sm:items-center py-2
-    pointer-events-none backdrop-blur-lg sm:backdrop-filter-none m-h-20" >
+    pointer-events-none sm:backdrop-filter-none m-h-20"
+    :class="mobileBackdrop">
     <ULink class="absolute top-0 left-5 bg-transparent pointer-events-auto" to="/" aria-label="Home">
       <NuxtImg src="/images/exodus-missions-logo-icon.png" sizes="20px sm:25px"/>
     </ULink>
@@ -134,7 +154,7 @@ onClickOutside(mainDiv, () => {
       <UCollapsible v-model:open="navOpen" class="flex flex-col"
         trailing-icon="i-fluent-chevron-down-20-filled">
         <UButton color="neutral" variant="subtle" icon="i-mdi-hamburger-menu" size="xl"
-          class="light:bg-transparent text-white text-2xl" />
+          class="light:bg-transparent text-2xl" :class="navIconColor"/>
         <template #content>
           <UNavigationMenu :items="navItems" variant="pill" color="secondary"
             highlight orientation="vertical" trailing-icon="i-fluent-chevron-down-20-filled" />

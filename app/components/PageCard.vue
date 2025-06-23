@@ -76,7 +76,7 @@ const pageCardAnimation = (delayIndex: number): CardAnimation => {
                 :items="pageCardData.backgroundImages" class="size-full">
                 <div :class="item.class">
                     <NuxtImg :src="item.url" :alt="item.alt" :placeholder="item.placeholder"
-                        loading="lazy" fit="cover" />
+                        loading="lazy" fit="cover" class="size-full"/>
                 </div>
             </UCarousel>
 
@@ -123,7 +123,7 @@ const pageCardAnimation = (delayIndex: number): CardAnimation => {
                         :carousalsContent="pageCardData.comparisonCarousals" />
                 </ClientOnly>
                 <RibbonBackground v-if="pageCardData.bodyRibbon" />
-                <p v-if="pageCardData.body" :class="pageCardData.bodyClass">{{ pageCardData.body }}</p>
+                <!-- <p v-if="pageCardData.body" :class="pageCardData.bodyClass">{{ pageCardData.body }}</p> -->
 
                 <BasicCardTable v-if="pageCardData.bodies" :content="pageCardData.bodies" />
 

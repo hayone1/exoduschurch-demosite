@@ -63,7 +63,8 @@ onMounted(() => {
     <div :id="id" ref="elementRef"
         class="grid grid-cols-1 md:grid-cols-2 justify-items-center items-center gap-4">
         <div :class="imagePos">
-            <h2 v-if="viewport.isLessOrEquals('mobileWide')" class="text-2xl font-semibold text-center w-full">
+            <h2 v-if="viewport.isLessOrEquals('mobileWide')"
+                class="text-2xl font-semibold text-center text-white w-full">
                 {{ title }}
             </h2>
             <br />
@@ -74,10 +75,13 @@ onMounted(() => {
             </video>
         </div>
         <div class="order-first">
-            <h2 v-if="!viewport.isLessOrEquals('mobileWide')" class="text-2xl font-semibold text-center w-full">
+            <h2 v-if="!viewport.isLessOrEquals('mobileWide')"
+                class="text-2xl font-semibold text-center text-white w-full">
                 {{ title }}
             </h2>
-            <slot></slot>
+            <p class="text-white">
+                <slot></slot>
+            </p>
             <div class="grid gap-1 auto-rows-max" :class="buttonColumns">
                 <UButton v-for="buttonData in bodyButtons" :label="buttonData.label" :variant="buttonData.variant"
                     :color="buttonData.color" :class="buttonData.class" :icon="buttonData.icon"
