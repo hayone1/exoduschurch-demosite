@@ -52,12 +52,16 @@ interface CardTableData {
 
 interface IParallaxFlow {
     title: string
-    visibilityNodesGroup: string[][],
-    focusNodes: string[],
-    nodes: (width: number, height: number) => Node<any, any, string>[],
+    nodeGroups: {  
+        pulseColor?: string
+        focusNodes: string[],
+        optionButton: ButtonContent,
+        visibilityNodesGroup: string[][],
+        nodes: (width: number, height: number) => Node<any, any, string>[],
+        edges: Edge<any, any, string>[],
+    }[],
     // globalThis.Ref<Node<any, any, string>[],Node<any, any, string>[]>,
     // nodes: (width: number, height: number) => Node<any, any, string>[],
-    edges: Edge<any, any, string>[],
     backGroundColor: ComputedRef<{
         parentBackground: string;
         patternBackground: string;

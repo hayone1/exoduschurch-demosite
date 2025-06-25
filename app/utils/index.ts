@@ -22,6 +22,7 @@ export function randomInt(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+/**Divide the given number into n number of parts */
 export function divideIntoParts(value: number, n: number): number[] {
   if (n <= 1) {
     return [0, value];

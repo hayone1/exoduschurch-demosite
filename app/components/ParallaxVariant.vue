@@ -44,8 +44,10 @@ useMotionValueEvent(yClipPathSpring, "change", (latestValue) => {
 
 </script>
 <template>
-    <motion.div class="overflow-hidden" :style="{ clipPath: yClipPath }">
-        <div class="magicpattern-1 h-screen grid grid-cols-4
+    <!-- pointer-event-auto here is to negate the parent's pointer-event-none such that
+     this element isn't interactable util revealed in the viewport -->
+    <motion.div class="overflow-hidden pointer-events-auto" :style="{ clipPath: yClipPath }">
+        <div class="magicpattern-2 h-screen grid grid-cols-4
             gap-4 pt-10 px-4 justify-items-center" :class="parallaxVariant.backGroundColor">
 
             <div class="z-0 absolute size-full flex justify-center">
