@@ -181,7 +181,7 @@ function setButtonChoice(label: string) {
         buttonChoice.value = label;
         buttonChoicesHeight.set(45);
         setTimeout(() => {
-            windowScroll.y.value += 100;
+            windowScroll.y.value += 250;
         }, 200)
         return;
     }
@@ -232,21 +232,21 @@ onMounted(() => {
 
 </script>
 <template>
-    <div ref="mainContainer">
-        <div class="absolute size-full overflow-hidden flex justify-center border-2 border-green-300">
+    <div ref="mainContainer" class="h-screen flex items-end">
+        <div class="absolute size-full overflow-hidden flex justify-center">
             <motion.div class="absolute size-10 bg-transparent
                 border-green-500 border-1 rounded-full pointer-events-none"
-                :style="{ x: mouseFollowerX, y: mouseFollowerY }" ref="mouseFollower" />
+                    :style="{ x: mouseFollowerX, y: mouseFollowerY }"
+                    ref="mouseFollower" />
             <h2 class="absolute self-center font-bold text-8xl opacity-25">
                 {{ parallaxFlow.title }}
             </h2>
             <AnimatePresence>
-                <motion.div v-if="foregroundTitleVisible" class="absolute self-center" key="foregroundTitle"
+                <motion.div v-if="foregroundTitleVisible" class="absolute self-center z-6" key="foregroundTitle"
                     :exit="{ opacity: 0 }">
                     <UButton :label="parallaxFlow.title" variant="subtle"
                         class="flex justify-center text-8xl rounded-full size-80" size="xl" @click="focusOnChoices" />
                 </motion.div>
-
             </AnimatePresence>
             <!-- <AnimatePresence :initial="false">
             </AnimatePresence> -->
@@ -278,11 +278,11 @@ onMounted(() => {
                 </motion.div>
             </motion.div>
         </div>
-        <div ref="elementRef" :id="transformToId(parallaxFlow.title)" class="h-screen overfow-hidden z-4">
+        <div ref="elementRef" :id="transformToId(parallaxFlow.title)" class="h-4/5 w-full overfow-hidden z-4">
             <VueFlow v-if="visibleNodeGroup.thresholdGroup" :nodes="visibleNodeGroup.thresholdGroup.nodes.value"
                 :edges="visibleNodeGroup.thresholdGroup.edges" :zoom-on-scroll="false" :zoom-on-pinch="false"
                 :zoom-on-double-click="false" :pan-on-scroll="false" :pan-on-drag="false" :prevent-scrolling="true">
-                <Background class="light:hidden" :patternColor="parallaxFlow.backGroundColor.value.patternBackground"
+                <Background class="light:hidden " :patternColor="parallaxFlow.backGroundColor.value.patternBackground"
                     :size="1.4" />
             </VueFlow>
         </div>
