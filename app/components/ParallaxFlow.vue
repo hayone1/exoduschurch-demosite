@@ -22,7 +22,7 @@ const elementRef = useTemplateRef('elementRef');
 const route = useRoute();
 const xPoint = useMotionValue(0);
 const yPoint = useMotionValue(0);
-const buttonChoicesHeight = useMotionValue(0);
+const buttonChoicesHeight = useSpring(0);
 const springConfig = { damping: 5, stiffness: 20, restDelta: 0.001 };
 
 const parallaxFocusThresholdGroups = parallaxFlow.nodeGroups.map(
@@ -96,12 +96,9 @@ useMotionValueEvent(scrollYProgress, 'change', (currentProgress) => {
 
     foregroundTitleVisible.value = makeTitleVisible;
     buttonChoicesVisible.value = !foregroundTitleVisible.value;
-    // if (buttonChoicesVisible.value === true && buttonChoicesHeight.get() !== 400) {
-    //     setTimeout(() => {
-    //         buttonChoicesHeight.set(400)
-
-    //     }, 1000)
-    // }
+    if (buttonChoicesVisible.value === true && buttonChoice.value === "") {
+        buttonChoicesHeight.set(200)
+    }
 
     if (typeof (visibleNodeGroup.value.nodeGroup) === 'undefined') { return; }
 
@@ -179,7 +176,6 @@ function focusOnChoices() {
 function setButtonChoice(label: string) {
     if (buttonChoice.value === "") {
         window.scrollTo({
-            // behavior: 'smooth',
             top: choiceVisibleScrollPos
         });
         buttonChoice.value = label;
@@ -216,7 +212,6 @@ onMounted(() => {
 
     // updateNodes();
     // edges = parallaxFlow.edges;
-    buttonChoicesHeight.set(200);
     if (element_id === elementRef.value?.id) {
         nextTick(() => {
             setTimeout(() => {
@@ -265,9 +260,9 @@ onMounted(() => {
                 </motion.div>
                 <p class="text-muted text-center -translate-y-9 ">Scroll</p>
             </div>
-            <motion.div key="buttonChoices" v-if="buttonChoicesVisible" class="grid grid-cols-1 content-between z-5 border-2 border-amber-400"
+            <motion.div key="buttonChoices" v-if="buttonChoicesVisible" class="grid grid-cols-1 content-between z-5"
                 :style="{ height: buttonChoicesHeight }" :class='buttonChoice === "" ? "self-center" : "self-start translate-y-20"'
-                :animate="{ height: 200 }" :exit="{ opacity: 0 }">
+                :exit="{ opacity: 0 }">
                 <motion.div v-for="nodeGroup in parallaxFlow.nodeGroups">
                     <div v-if='buttonChoice === nodeGroup.optionButton.label || buttonChoice === ""'>
                         <motion.div v-for="index in [0, 1, 2]" class="absolute w-35 h-10 rounded-3xl -z-1"
