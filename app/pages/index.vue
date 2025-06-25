@@ -15,7 +15,7 @@ const timedCarousals = useTimedCarousels();
 // the additions is to account for the extra empty section that aids in the sticky
 // scrolling
 const parallaxTotal = parallaxFlows.length + parallaxVariants.length;
-const parallaxHeightTotal = parallaxTotal + 3;
+const parallaxHeightTotal = parallaxTotal + 2;
 const parallaxSectionHeight = `${parallaxHeightTotal}00vh`;
 // const parallaxSectionHeight = `h-[${parallaxFlows.length + 1}00vh]`;
 // const parallaxSectionHeight = `h-[${parallaxFlows.length + 1}00vh]`;

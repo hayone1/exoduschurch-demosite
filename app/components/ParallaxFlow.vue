@@ -16,22 +16,37 @@ const {
 }>();
 
 
-const { y: xScroll } = useWindowScroll({ behavior: 'smooth' });
+const windowScroll = useWindowScroll({ behavior: 'smooth' });
 const { fitView } = useVueFlow();
 const elementRef = useTemplateRef('elementRef');
-const parallaxFocusThresholdGroups = parallaxFlow.nodeGroups.map(
-    nodeGroup => ({
-        label: nodeGroup.optionButton.label,
-        parallaxFocusThreshold: divideIntoParts(
-            1, nodeGroup.visibilityNodesGroup.length + 1
-        )
-    })
-);
-
 const route = useRoute();
 const xPoint = useMotionValue(0);
 const yPoint = useMotionValue(0);
+const buttonChoicesHeight = useMotionValue(0);
 const springConfig = { damping: 5, stiffness: 20, restDelta: 0.001 };
+
+const parallaxFocusThresholdGroups = parallaxFlow.nodeGroups.map(
+    nodeGroup => ({
+        label: nodeGroup.optionButton.label,
+        //using plus 2 so I can dismiss the first item in the parts
+        parallaxFocusThreshold: divideIntoParts(
+            1, nodeGroup.visibilityNodesGroup.length + 2
+        ),
+        nodes: ref(nodeGroup.nodes),
+        edges: nodeGroup.edges
+    })
+);
+const foregroundTitleVisible = ref(true);
+const buttonChoice = ref("");
+const buttonChoicesVisible = ref(false);
+const visibleNodeGroup = computed(() => ({
+    nodeGroup: parallaxFlow.nodeGroups.find(group =>
+        group.optionButton.label === buttonChoice.value
+    ),
+    thresholdGroup: parallaxFocusThresholdGroups.find(group =>
+        group.label === buttonChoice.value
+    )
+}));
 
 const mouseFollower = useTemplateRef('mouseFollower');
 const mouseFollowerSize = useElementSize(mouseFollower);
@@ -41,7 +56,6 @@ const mouseInMainContainer = useMouseInElement(mainContainer);
 
 const mouseFollowerX = useSpring(xPoint, springConfig);
 const mouseFollowerY = useSpring(yPoint, springConfig);
-var visibleNodeGroups: string[] = [];
 
 const scrollHintAnim = ({
     opacity: [0, 1, 0],
@@ -59,19 +73,9 @@ var element_id: string;
 if (typeof (route.fullPath) !== 'undefined' && route.fullPath.includes("#")) {
     element_id = route.fullPath.split("#").at(-1)!;
 }
-
-var nodes: globalThis.Ref<
-    Node<any, any, string>[],
-    Node<any, any, string>[]> = ref([]);
-// var nodes: Reactive<Node<any, any, string>[]>;
-var edges: Edge[];
-var sizeWatcher: WatchHandle;
+var choiceVisibleScrollPos = 0;
 //---------Nodes Animation-----------
-const foregroundTitleVisible = ref(true);
-const buttonChoice = ref("");
-const buttonChoicesVisible = computed(() =>
-    (!foregroundTitleVisible.value)
-);
+
 const buttonChoicesTransition = (delay: number) => ({
     delay: delay,
     repeat: Infinity,
@@ -86,32 +90,50 @@ useMotionValueEvent(scrollYProgress, 'change', (currentProgress) => {
     if (foregroundTitleVisible.value === false && makeTitleVisible) {
         buttonChoice.value = "";
     }
+    if (foregroundTitleVisible.value === true && !makeTitleVisible) {
+        choiceVisibleScrollPos = window.scrollY;
+    }
+
     foregroundTitleVisible.value = makeTitleVisible;
-    //careful! this must not be null
-    const visibleNodeGroup = parallaxFlow.nodeGroups.find(group =>
-        group.optionButton.label === buttonChoice.value
-    );
-    if (typeof(visibleNodeGroup) === 'undefined') { return; }
-    const visibleThresholdGroup = parallaxFocusThresholdGroups.find(group =>
-        group.label === visibleNodeGroup?.optionButton.label
-    );
-    visibleThresholdGroup?.parallaxFocusThreshold
-        .forEach((threshold, index) => {
+    buttonChoicesVisible.value = !foregroundTitleVisible.value;
+    // if (buttonChoicesVisible.value === true && buttonChoicesHeight.get() !== 400) {
+    //     setTimeout(() => {
+    //         buttonChoicesHeight.set(400)
+
+    //     }, 1000)
+    // }
+
+    if (typeof (visibleNodeGroup.value.nodeGroup) === 'undefined') { return; }
+
+    var visibleNodes: string[] = [];
+    //skip the first item
+    visibleNodeGroup.value.thresholdGroup?.parallaxFocusThreshold.slice(1).forEach(
+        (threshold, index) => {
             const offsetThreshold = (threshold + .05);
-            //conditions ensure animation only runs on first scroll down
-            //which doesn't seem to work lol
+            const nodeGroup = visibleNodeGroup.value.nodeGroup;
+            const thresholdGroup = visibleNodeGroup.value.thresholdGroup;
+            if (typeof (nodeGroup) === 'undefined' || typeof (thresholdGroup) === 'undefined') {
+                return;
+            }
+
             if (
-                visibleNodeGroups.length <= visibleNodeGroup.visibilityNodesGroup.flat().length &&
+                visibleNodes.length <=
+                nodeGroup.visibilityNodesGroup.flat().length &&
                 scrollYProgress.getPrevious() < offsetThreshold &&
                 currentProgress >= threshold
             ) {
-                visibleNodeGroups = visibleNodeGroup.visibilityNodesGroup.slice(
-                    0, index + 1
-                ).flat();
+                //string id of the nodes
+                visibleNodes = nodeGroup!.visibilityNodesGroup
+                    .slice(0, index + 1).flat();
                 // console.log("current Visibility Group: ", JSON.stringify(visibleNodeGroups));
-                updateNodes();
+                //update the nodes feeding the html
+                thresholdGroup.nodes.value = nodeGroup.nodes.map(node => ({
+                    ...node,
+                    hidden: !visibleNodes.includes(node.id)
+                }));
+                //focus on the nodes using ther string id
                 fitView({
-                    nodes: visibleNodeGroups,
+                    nodes: visibleNodes,
                     // nodes: parallaxFlow.focusNodes.slice(0, index + 1),
                     duration: 500
                 });
@@ -119,17 +141,6 @@ useMotionValueEvent(scrollYProgress, 'change', (currentProgress) => {
             }
         });
 });
-
-// const pulsingBackground = {
-//     scale: 1.5,
-//     opacity: 0,
-// }
-// const pulsingBackgroundTransition = (delay: number) => ({
-//     delay: delay,
-//     duration: 3,
-//     repeat: Infinity,
-//     repeatType: 'loop' as const
-// })
 
 const mouseMovementWatcher = watchEffect(
     () => {
@@ -146,7 +157,7 @@ const mouseMovementWatcher = watchEffect(
         //     mouseInMainContainer.elementX.value,
         //     mouseInMainContainer.elementY.value,
         // )
-    });
+});
 watch(mouseInMainContainer.isOutside, (isOutside) => {
     if (!isOutside) {
         mouseMovementWatcher.resume();
@@ -167,7 +178,15 @@ function focusOnChoices() {
 
 function setButtonChoice(label: string) {
     if (buttonChoice.value === "") {
+        window.scrollTo({
+            // behavior: 'smooth',
+            top: choiceVisibleScrollPos
+        });
         buttonChoice.value = label;
+        buttonChoicesHeight.set(45);
+        setTimeout(() => {
+            windowScroll.y.value += 100;
+        }, 200)
         return;
     }
     buttonChoice.value = "";
@@ -179,25 +198,25 @@ function setButtonChoice(label: string) {
     })
 }
 
-function updateNodes() {
-    // updateNodes();
-    sizeWatcher = watchEffect(() => {
-        nodes.value = parallaxFlow.nodes(
-            mainContainerSize.width.value,
-            mainContainerSize.height.value,
-        ).map(node => ({
-            ...node,
-            hidden: !visibleNodeGroups.includes(node.id)
-        }));
-    })
-}
+// function updateNodes() {
+//     // updateNodes();
+//     sizeWatcher = watchEffect(() => {
+//         nodes.value = parallaxFlow.nodes(
+//             mainContainerSize.width.value,
+//             mainContainerSize.height.value,
+//         ).map(node => ({
+//             ...node,
+//             hidden: !visibleNodeGroups.includes(node.id)
+//         }));
+//     })
+// }
 
 
 onMounted(() => {
 
     // updateNodes();
     // edges = parallaxFlow.edges;
-
+    buttonChoicesHeight.set(200);
     if (element_id === elementRef.value?.id) {
         nextTick(() => {
             setTimeout(() => {
@@ -246,27 +265,28 @@ onMounted(() => {
                 </motion.div>
                 <p class="text-muted text-center -translate-y-9 ">Scroll</p>
             </div>
-            <motion.div key="buttonChoices" v-if="buttonChoicesVisible" class="grid grid-cols-1 content-between z-5"
-                :animate="{ height: 200 }" :class='buttonChoice === "" ? "self-center" : "self-start translate-y-20"'
-                :exit="{ opacity: 0 }">
+            <motion.div key="buttonChoices" v-if="buttonChoicesVisible" class="grid grid-cols-1 content-between z-5 border-2 border-amber-400"
+                :style="{ height: buttonChoicesHeight }" :class='buttonChoice === "" ? "self-center" : "self-start translate-y-20"'
+                :animate="{ height: 200 }" :exit="{ opacity: 0 }">
                 <motion.div v-for="nodeGroup in parallaxFlow.nodeGroups">
-                    <motion.div v-for="index in [0, 1, 2]" class="absolute w-35 h-10 rounded-3xl -z-1"
-                        :class="nodeGroup.pulseColor" :animate="{ scale: 1.5, opacity: 0 }"
-                        :transition="buttonChoicesTransition(index)" />
-                    <UButton v-if='buttonChoice === nodeGroup.optionButton.label || buttonChoice === ""'
-                        :label="nodeGroup.optionButton.label" class="rounded-full w-full justify-center"
-                        :variant="nodeGroup.optionButton.variant" :color="nodeGroup.optionButton.color"
-                        :class="nodeGroup.optionButton.class" :icon="nodeGroup.optionButton.icon" size="xl"
-                        @click="setButtonChoice(nodeGroup.optionButton.label)">
-                    </UButton>
+                    <div v-if='buttonChoice === nodeGroup.optionButton.label || buttonChoice === ""'>
+                        <motion.div v-for="index in [0, 1, 2]" class="absolute w-35 h-10 rounded-3xl -z-1"
+                            :class="nodeGroup.pulseColor" :animate="{ scale: 1.5, opacity: 0 }"
+                            :transition="buttonChoicesTransition(index)" />
+                        <UButton
+                            :label="nodeGroup.optionButton.label" class="rounded-full w-full justify-center"
+                            :variant="nodeGroup.optionButton.variant" :color="nodeGroup.optionButton.color"
+                            :class="nodeGroup.optionButton.class" :icon="nodeGroup.optionButton.icon" size="xl"
+                            @click="setButtonChoice(nodeGroup.optionButton.label)">
+                        </UButton>
+                    </div>
                 </motion.div>
             </motion.div>
         </div>
         <div ref="elementRef" :id="transformToId(parallaxFlow.title)" class="h-screen overfow-hidden z-4">
-            <VueFlow v-for="nodeGroup in parallaxFlow.nodeGroups.filter(nodeGrp =>
-                nodeGrp.optionButton.label === buttonChoice)" :nodes="nodes" :edges="edges" :zoom-on-scroll="false"
-                :zoom-on-pinch="false" :zoom-on-double-click="false" :pan-on-scroll="false" :pan-on-drag="false"
-                :prevent-scrolling="true">
+            <VueFlow v-if="visibleNodeGroup.thresholdGroup" :nodes="visibleNodeGroup.thresholdGroup.nodes.value"
+                :edges="visibleNodeGroup.thresholdGroup.edges" :zoom-on-scroll="false" :zoom-on-pinch="false"
+                :zoom-on-double-click="false" :pan-on-scroll="false" :pan-on-drag="false" :prevent-scrolling="true">
                 <Background class="light:hidden" :patternColor="parallaxFlow.backGroundColor.value.patternBackground"
                     :size="1.4" />
             </VueFlow>

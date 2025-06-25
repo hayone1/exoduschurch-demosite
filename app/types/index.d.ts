@@ -57,7 +57,7 @@ interface IParallaxFlow {
         focusNodes: string[],
         optionButton: ButtonContent,
         visibilityNodesGroup: string[][],
-        nodes: (width: number, height: number) => Node<any, any, string>[],
+        nodes: Node<any, any, string>[],
         edges: Edge<any, any, string>[],
     }[],
     // globalThis.Ref<Node<any, any, string>[],Node<any, any, string>[]>,
